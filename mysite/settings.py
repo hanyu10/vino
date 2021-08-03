@@ -78,14 +78,21 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'db-vino.c8bzsodzz3ov.ap-northeast-2.rds.amazonaws.com', # 데이터베이스 서버 IP
-        'PORT': '3306', # 포트번호
-        'NAME': 'db-vino', # 데이터베이스 명
-        'USER': 'iot', # 데이터베이스 사용자 ID
-        'PASSWORD': '1234' # 비밀번호
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'HOST': 'db-vino.c8bzsodzz3ov.ap-northeast-2.rds.amazonaws.com', # 데이터베이스 서버 IP
+#         'PORT': '3306', # 포트번호
+#         'NAME': 'dbvino', # 데이터베이스 명
+#         'USER': 'iot', # 데이터베이스 사용자 ID
+#         'PASSWORD': '1234' # 비밀번호
+#     }
+# }
 
 
 # Password validation
