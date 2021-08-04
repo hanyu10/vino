@@ -1,9 +1,5 @@
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, ListView
 from wine.models import Country, Wine
-
-class WineHomeView(TemplateView):
-    # wine:search 로 리디렉션
-    template_name = 'wine/index.html'
 
 class WineDetailView(DetailView):
     model = Wine
