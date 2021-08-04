@@ -1,15 +1,66 @@
 {% extends 'base.html' %}
 
 {% block content-header %}
-    <h1>기본 템플릿입니다</h1>
+    <h1 class="text-center">VINO</h1>
 {% endblock  %}
 
 {% block content %}
-    <h2>이곳에 content를 작성</h2>
+    <div class="col-sm-8 mx-auto py-5">
+        <div class="input-group rounded">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                aria-describedby="search-addon" />
+            <span class="input-group-text border-0" id="search-addon">
+                <i class="fas fa-search"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="row justify-content-center my-5">
+        <div class="card" style="width:200px">
+            <img class="card-img-top" src="https://img.freepik.com/free-photo/red-wine_144627-33208.jpg?size=626&ext=jpg&ga=GA1.2.1320595435.1627868186" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">John Doe</h4>
+                <p class="card-text">Some example text.</p>
+                <a href="#" class="btn btn-primary">See Profile</a>
+            </div>
+        </div>
+        <div class="card" style="width:200px">
+            <img class="card-img-top" src="https://img.freepik.com/free-vector/premium-quality-red-white-and-pink-wine-labels-set-on-the-realistic-bottles_167715-856.jpg?size=338&ext=jpg&ga=GA1.2.1320595435.1627868186" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">John Doe</h4>
+                <p class="card-text">Some example text.</p>
+                <a href="#" class="btn btn-primary">See Profile</a>
+            </div>
+        </div>
+        <div class="card" style="width:200px">
+            <img class="card-img-top" src="https://img.freepik.com/free-photo/red-wine_144627-33208.jpg?size=626&ext=jpg&ga=GA1.2.1320595435.1627868186" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">John Doe</h4>
+                <p class="card-text">Some example text.</p>
+                <a href="#" class="btn btn-primary">See Profile</a>
+            </div>
+        </div>
+        <div class="card" style="width:200px">
+            <img class="card-img-top" src="https://img.freepik.com/free-vector/premium-quality-red-white-and-pink-wine-labels-set-on-the-realistic-bottles_167715-856.jpg?size=338&ext=jpg&ga=GA1.2.1320595435.1627868186" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">John Doe</h4>
+                <p class="card-text">Some example text.</p>
+                <a href="#" class="btn btn-primary">See Profile</a>
+            </div>
+        </div>
+        <div class="card" style="width:200px">
+            <img class="card-img-top" src="https://img.freepik.com/free-photo/red-wine_144627-33208.jpg?size=626&ext=jpg&ga=GA1.2.1320595435.1627868186" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">John Doe</h4>
+                <p class="card-text">Some example text.</p>
+                <a href="#" class="btn btn-primary">See Profile</a>
+            </div>
+        </div>
+    </div>
 {% endblock  %}
 
 {% block left-aside %}
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    {% comment %} <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{% url 'home' %}" class="brand-link">
         <span class="brand-text font-weight-light">VINO</span>
@@ -28,12 +79,12 @@
                            New</span></p>
                     </a>
                 </li>
-                {% comment %} <li class="nav-item">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>App</p>
                     </a>
-                </li> {% endcomment %}
+                </li>
                 <li class="nav-item">
                     <a href="#"  class="nav-link">
                         <i class="nav-icon fas fa-blog"></i>
@@ -46,5 +97,5 @@
             </ul>
         </nav>
     </div>
-</aside>
+</aside> {% endcomment %}
 {% endblock %}
