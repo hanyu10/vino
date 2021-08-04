@@ -1,19 +1,40 @@
 {% extends 'base_wine.html' %}
 
+{% load bootstrap4 %}
+
 {% block content-header %}
   <h1 class="text-center">와인 검색</h1>
 {% endblock content-header %}
 
 {% block content %}
-<div>
     <div class="col-sm-8 mx-auto py-5">
-        <div class="input-group rounded">
-            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                aria-describedby="search-addon" />
-            <span class="input-group-text border-0" id="search-addon">
+        <form action="." method="post" class="input-group rounded">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% comment %} {{ form.as_p }} {% endcomment %}
+            {% comment %} <input  type="search" 
+                    class="form-control rounded"   
+                    placeholder="Search Wine" /> {% endcomment %}
+            <button type="submit" class="btn btn-primary btn-sm" >
                 <i class="fas fa-search"></i>
-            </span>
-        </div>
+            </button>
+            <button type="reset" class="btn btn-primary btn-sm" >
+                <i class="fas fa-undo-alt"></i>
+            </button>
+        </form>
+        {% if result %}
+            결과 : 
+        {% endif %}
     </div>
-</div>
 {% endblock content %}
+
+{% comment %} 이렇게 하나씩 구현할 수도 있는듯 (https://docs.djangoproject.com/en/3.2/topics/forms/)
+{% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+    </div>
+{% endfor %} {% endcomment %}
