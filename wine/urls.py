@@ -4,6 +4,7 @@ from .views import *
 app_name = 'wine'
 
 urlpatterns = [
-    path('', WineView.as_view(), name='index'),
+    path('', WineHomeView.as_view(), name='index'),
     path('search/', include('search.urls')),
+    path('detail/<int:pk>/', WineDetailView.as_view(), name='detail')
 ]
