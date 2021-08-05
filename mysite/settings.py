@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'wiki',
     'wine',
     'search',
+    'news',
+    'review',
     'country',
 ]
 
