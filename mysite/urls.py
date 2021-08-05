@@ -25,4 +25,5 @@ urlpatterns = [
     # path('search/', include('search.urls')),
     path('wine/', include('wine.urls')),
     path('wiki/', include('wiki.urls')),
+    path('review/', include('review.urls')),
 ]

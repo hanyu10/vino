@@ -60,7 +60,7 @@ def main():
 
     # 'news', 'blog', 'cafearticle'
     sNode = 'news'
-    search_text = '탄핵'
+    search_text = '레드와인'
     display_count = 100
     
     jsonSearch = getNaverSearchResult(sNode, search_text, 1, display_count)

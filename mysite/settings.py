@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'wine',
     'search',
     'news',
+    'review',
 ]
 
 MIDDLEWARE = [
