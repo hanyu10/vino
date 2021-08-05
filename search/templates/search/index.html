@@ -1,0 +1,61 @@
+{% extends 'base_wine.html' %}
+
+{% load bootstrap4 %}
+
+{% block content-header %}
+  <h1 class="text-center">와인 검색</h1>
+{% endblock content-header %}
+
+{% block content %}
+<div class="row">
+    {% comment %} <div class="col-sm-3 border">
+        <ul>
+            <li><a href="{% url 'wine:search:index' %}">와인 검색</a></li>
+            <li><a href="{% url 'wiki:index' %}">와인 관련 지식</a></li>
+        </ul>
+    </div> {% endcomment %}
+    <div class="col-md-3">
+    <!-- 사이드 바 메뉴-->
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">와인 정보</h3>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="{% url 'wine:search:index' %}">와인 검색</a></li>
+                <li class="list-group-item"><a href="{% url 'wiki:index' %}">와인 관련 지식</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-sm-9 py-5">
+        <form action="." method="post" class="input-group rounded">
+            {% csrf_token %}
+            {% comment %} {% bootstrap_form form %} {% endcomment %}
+            {{ form.as_p }}
+            {% comment %} <input  type="search" 
+                    class="form-control rounded"   
+                    placeholder="Search Wine" /> {% endcomment %}
+            <button type="submit" class="btn btn-primary btn-sm" >
+                <i class="fas fa-search"></i>
+            </button>
+            <button type="reset" class="btn btn-primary btn-sm" >
+                <i class="fas fa-undo-alt"></i>
+            </button>
+        </form>
+        {% if result %}
+            결과 : 
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
+
+{% comment %} 이렇게 하나씩 구현할 수도 있는듯 (https://docs.djangoproject.com/en/3.2/topics/forms/)
+{% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+    </div>
+{% endfor %} {% endcomment %}
