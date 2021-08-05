@@ -7,5 +7,7 @@ app_name = 'wine'
 urlpatterns = [
     path('', RedirectView.as_view(url='search/')),
     path('search/', include('search.urls')),
+    path('', RedirectView.as_view(url='country/')),
+    path('country/', include('country.urls')),
     path('detail/<int:pk>/', WineDetailView.as_view(), name='detail'),
 ]

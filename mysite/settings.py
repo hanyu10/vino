@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'wiki',
     'wine',
     'search',
+    'country',
 ]
 
 MIDDLEWARE = [
@@ -138,6 +139,7 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [Path.joinpath(BASE_DIR, 'static')]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
