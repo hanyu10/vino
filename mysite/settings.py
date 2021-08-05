@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'wiki',
     'wine',
     'search',
+    'pairing',
 ]
 
 MIDDLEWARE = [
