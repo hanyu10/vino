@@ -1,13 +1,25 @@
 {% extends 'base_wine.html' %}
 
+{% load static %}
+
 {% block content-header %}
   <h1 class="text-center">와인 상세 정보</h1>
 {% endblock content-header %}
 
 {% block content %}
-<div>
+<div class="container">
   <h3>{{ wine.name }}</h3>
-  <img src="#" />
+  
+  <img src="{% static 'images/'|add:wine.area.area|add:'/'|add:wine.name|add:'.png' %}" style="width:120px; height:220px"/>
+  <div class="d-inline-flex flex-column">
+      <ul class="list-group list-group-horizontal mt-5 ml-3">
+          <li class="list-group-item">{{wine.wine_type}}</li>
+          <li class="list-group-item">{{wine.food}}</li>
+          <li class="list-group-item">{{wine.sugar}}</li>
+          <li class="list-group-item">{{wine.sour}}</li>
+          <li class="list-group-item">{{wine.area}}</li>
+      </ul>
+  </div>
   <p>와인 설명</p>
   <div>
     리뷰
