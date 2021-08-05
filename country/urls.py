@@ -4,5 +4,6 @@ from .views import *
 app_name = 'country'
 
 urlpatterns = [
-    path('', globalView.as_view(), name='index')
+    path('', globalView.as_view(), name='index'),
+    path('list/', GlobalListView.as_view(), name='list'),
 ]
