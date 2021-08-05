@@ -94,7 +94,8 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'db-vino.c8bzsodzz3ov.ap-northeast-2.rds.amazonaws.com', # 데이터베이스 서버 IP
+        # 'HOST': 'db-vino.c8bzsodzz3ov.ap-northeast-2.rds.amazonaws.com', # 데이터베이스 서버 IP
+        'HOST': 'database-vino.c8bzsodzz3ov.ap-northeast-2.rds.amazonaws.com', # 한글 데이터베이스 서버 IP
         'PORT': '3306', # 포트번호
         'NAME': 'dbvino', # 데이터베이스 명
         'USER': 'admin', # 데이터베이스 사용자 ID
