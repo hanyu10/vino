@@ -1,40 +1,53 @@
 {% extends 'base.html' %}
 
+{% block style %}
+<style>
+    a {
+        color: black;
+        text-decoration: none;
+    }
+    a:hover {
+        color: gray;
+    }
+</style>
+{% endblock style %}
+
 {% block content-header %}
-<div class="col-sm-8 mx-auto py-5">
-    <h1><i class="fas fa-list"></i> review 목록</h1>
+<div class="col-sm-8 mx-auto py-2">
+    <h1><i class="fas fa-list"></i> 와인 리뷰</h1>
 </div>
 {% endblock %}
 
-{% block content%}
-<div class="col-sm-8 mx-auto py-5">
-    {%for post in posts%}
-    <h3><a href="{{post.get_absolute_url}}">{{post.title}}</a></h3>
-    {{post.modify_dt|date:"Y-m-d"}}
-    <p>{{post.description}}</p>
+{% block content-wrapper %}
+<div class="col-sm-8 mx-auto p-3 m-3 border">
+    {% autoescape off %}
+    {% for post in posts %}
+        <div class="border-bottom my-2">
+            <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+            <p class="text-right">{{ post.owner }} {{ post.modify_dt|date:"Y-m-d" }}</p>
+            <p>{{ post.content|slice:50 }}</p>
+        </div>
     {% endfor %}
-
+    {% endautoescape %}
     <div>
         <span>
             {% if page_obj.has_previous %}
-            <a href="?page={{page_obj.previous_page_number}}">Prev</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Prev</a>
             {% endif %}
 
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages}}
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
             {% if page_obj.has_next %}
-            <a href="?page={{page_obj.next_page_number}}">Next</a>
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
             {% endif %}
-
         </span>
     </div>
 
     {% if user.is_active %}
     <div class="text-right mr-3">
-        <a href="{%url 'review:add' %}" class="btn btn-primary btn-sm">
-            <i class="fas fa-pencil-alt"></i> 쓰기</a>
+        <a href="{% url 'review:add' %}" class="btn btn-primary btn-sm">
+            <i class="fas fa-pencil-alt"></i> 리뷰 작성</a>
     </div>
     {% endif %}
-
 </div>
 
 {% endblock %}

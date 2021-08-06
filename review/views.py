@@ -5,34 +5,39 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from accounts.views import OwnerOnlyMixin
 
-# ListView
 class PostListView(ListView):
- model = Post
- template_name = 'review/post_all.html' # 템플릿 파일명 변경
- context_object_name = 'posts' # 컨텍스트 객체 이름 변경(object_list)
- paginate_by = 2 # 페이지네이션, 페이지당 문서 건 수
-# DetailView
+  model = Post
+  template_name = 'review/post_all.html'
+  context_object_name = 'posts'
+  paginate_by = 5
+
+  def get(self, request, *args, **kwargs):
+    wine = request.GET.get('wine')
+    if wine:
+      self.queryset = Post.objects.filter(wine=wine)
+    return super().get(request, *args, **kwargs)
+
 class PostDetailView(DetailView):
- model = Post
+  model = Post
 
 class PostCreateView(LoginRequiredMixin, CreateView):
- model = Post
- fields = ['title', 'description', 'content']
- success_url = reverse_lazy('review:index')
- 
- def form_valid(self, form):
-  form.instance.owner = self.request.user
-  return super().form_valid(form)
+  model = Post
+  fields = ['title', 'content']
+  success_url = reverse_lazy('review:index')
+  
+  def form_valid(self, form):
+    form.instance.owner = self.request.user
+    return super().form_valid(form)
 
 class PostUpdateView(OwnerOnlyMixin, UpdateView):
- model = Post
- fields = ['title', 'description', 'content']
- success_url = reverse_lazy('review:index')
+  model = Post
+  fields = ['title', 'content']
+  success_url = reverse_lazy('review:index')
 
 class PostDeleteView(OwnerOnlyMixin, DeleteView) :
- model = Post
- success_url = reverse_lazy('review:index')
- 
- def get(self, *args, **kwargs):
-  return self.post(*args, **kwargs)
+  model = Post
+  success_url = reverse_lazy('review:index')
+  
+  def get(self, *args, **kwargs):
+    return self.post(*args, **kwargs)
 

@@ -6,7 +6,7 @@
   <h1><i class="fas fa-user-plus"></i> 회원 가입</h1>
 {% endblock content-header %}
 
-{% block content %}
+{% block content-wrapper %}
   <div class="row">
     <form action="." method="post" class="form col-sm-6 mx-auto">
       {% csrf_token %}
@@ -16,4 +16,4 @@
       </button>
     </form>
   </div>
-{% endblock content %}
+{% endblock content-wrapper %}
