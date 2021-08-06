@@ -33,15 +33,15 @@ class SearchView(FormView):
         page = request.GET.get('page', 1)
         wine_list = paginator.get_page(page)
         wine_query = []
-        if (name):
+        if name:
             wine_query.append(f'name={name}')
-        if (wine_type):
+        if wine_type:
             wine_query.append(f'wine_type={wine_type}')
-        if (food):
+        if food:
             wine_query.append(f'food={food}')
-        if (sugar):
+        if sugar:
             wine_query.append(f'sugar={sugar}')
-        if (sour):
+        if sour:
             wine_query.append(f'sour={sour}')
         if wine_query:
             wine_query = '&'.join(wine_query)
@@ -62,15 +62,15 @@ class SearchView(FormView):
         # print(f"POST 요청의 form 파라미터 : ({name}, {wine_type}, {food}, {sugar}, {sour})")
         self.success_url = f'./'
         wine_query = []
-        if (name):
+        if name:
             wine_query.append(f'name={name}')
-        if (wine_type):
+        if wine_type:
             wine_query.append(f'wine_type={wine_type}')
-        if (food):
+        if food:
             wine_query.append(f'food={food}')
-        if (sugar):
+        if sugar:
             wine_query.append(f'sugar={sugar}')
-        if (sour):
+        if sour:
             wine_query.append(f'sour={sour}')
         if wine_query:
             self.success_url += '?' + '&'.join(wine_query)
