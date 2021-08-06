@@ -47,7 +47,7 @@
         {% if wine_list %}
             <h2 class="mt-4">와인 리스트</h2>
             {% for wine in wine_list %}
-                <a href="{% url 'wine:detail' wine.id %}" class="text-dark d-flex py-4">
+                <a href="{% url 'wine:detail' wine.id %}" class="text-dark d-flex py-4 border-bottom">
                     <img src="{% static 'images/'|add:wine.area.area|add:'/'|add:wine.name|add:'.png' %}" style="width:120px; height:220px"/>
                     <div class="d-flex flex-column">
                         <span><h3>{{wine.name}}</h3></span>
@@ -62,17 +62,15 @@
                 </a>
             {% endfor %}
 
-            
         {% endif %}
-
         {% if wine_list.has_previous %}
-            <a href="?page={{wine_list.number|add:-1}}">Previous</a>
+            <a href="?page={{wine_list.number|add:-1}}&{{wine_query}}">Previous</a>
         {% endif %}
         Page {{wine_list.number}} of {{wine_list.paginator.num_pages}}
         {% if wine_list.has_next %}
-            <a href="?page={{wine_list.number|add:+1}}">Next</a>
+            <a href="?page={{wine_list.number|add:+1}}&{{wine_query}}">Next</a>
         {% endif %}
-            
+
 
     </div>
 </div>

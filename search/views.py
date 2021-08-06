@@ -5,16 +5,10 @@ from search.forms import SearchForm
 from wine.models import Wine
 from django.core.paginator import Paginator
 
-
-
-
-
 class SearchView(FormView):
     template_name = 'search/index.html'
     form_class = SearchForm
     success_url = '.'
-    
-    
 
     def get(self, request, *args, **kwargs):
         name = request.GET.get('name')
@@ -22,8 +16,6 @@ class SearchView(FormView):
         food = request.GET.get('food')
         sugar = request.GET.get('sugar')
         sour = request.GET.get('sour')
-        # print(f"GET 요청의 파라미터 : ({name}, {wine_type}, {food}, {sugar}, {sour})")
-        page=request.GET.get('page', 1)
         wine_list = Wine.objects.all()
         
         if name:
@@ -37,15 +29,28 @@ class SearchView(FormView):
         if sour:
             wine_list = wine_list.filter(sour=sour)
 
-        
-        paginator = Paginator(wine_list, 2)
-        
-        wine_list=paginator.get_page(page)
-        
-        
+        paginator = Paginator(wine_list, 5)
+        page = request.GET.get('page', 1)
+        wine_list = paginator.get_page(page)
+        wine_query = []
+        if (name):
+            wine_query.append(f'name={name}')
+        if (wine_type):
+            wine_query.append(f'wine_type={wine_type}')
+        if (food):
+            wine_query.append(f'food={food}')
+        if (sugar):
+            wine_query.append(f'sugar={sugar}')
+        if (sour):
+            wine_query.append(f'sour={sour}')
+        if wine_query:
+            wine_query = '&'.join(wine_query)
+        # print(wine_query)
 
-        # print(wine_list)
-        self.extra_context = {'wine_list': wine_list}
+        self.extra_context = {
+            'wine_list': wine_list,
+            'wine_query': wine_query
+        }
         return super().get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
@@ -70,3 +75,4 @@ class SearchView(FormView):
         if wine_query:
             self.success_url += '?' + '&'.join(wine_query)
         return super().post(request, *args, **kwargs)
+
