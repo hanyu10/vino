@@ -6,6 +6,20 @@
 
 {% block content %}
 <div>
+
+    <div class="col-md-3">
+        <!-- 사이드 바 메뉴-->
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">와인 정보</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="{% url 'wine:search:index' %}">와인 검색</a></li>
+                    <li class="list-group-item"><a href="{% url 'wiki:index' %}">와인 관련 지식</a></li>
+                </ul>
+            </div>
+        </div>
+
     <div class="col-sm-8 mx-auto py-5">
         
         <p id="list"></p>
