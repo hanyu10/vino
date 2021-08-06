@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content-header %}
+    <h1 class="text-center">와인과 어울리는 음식</h1>
+{% endblock  %}
+
+{% block content %}
+
+        <style>
+        .jumbotron {
+            background-color: gray;
+            color: white;
+            background-size: cover;
+            border-radius: 10px;
+			text : bold;
+        }
+    </style>
+
+    <div class="container">
+        <div class="jumbotron py-3 mt-0">
+            <h1>돼지고기와 어울리는 와인</h1>
+            <h2></h2>
+        </div>
+
+<p style="margin-top:45px;">
+
+<table class="table table-hover table-border">
+<tbody>
+<tr>
+<td>
+<img src="{% static 'images/portugal/Burmester, Tavedo White.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>버메스터, 화이트 포트</br>
+Burmester, White Port<button type="button" class="btn btn-primary">White</button>
+</dt>
+<dd>-국가/생산지역 : 포르투갈 > 도우루</dd>
+<dd>-주요 품종 : 포트 블랜드</dd>
+</dl>
+<h6>
+진한 흰 꽃 아로마 향의 화이트 와인! <br>
+입 안에서는 적당한 산미와 당도가 부드러운 목 넘김으로 이어지며 레드 포트에 비하여 덜 부담스럽게 접근할 수 있는 와인입니다.
+<br>
+<br>
+<a href="http://127.0.0.1:8000/wine/detail/37/" class="alert-link" target="_blank">와인 정보 보기</a>
+</h6>
+</td>
+</tr>
+
+
+
+
+
+</tbody>
+</table>
+
+
+
+{% endblock content %}

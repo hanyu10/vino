@@ -10,4 +10,5 @@ urlpatterns = [
     path('', RedirectView.as_view(url='country/')),
     path('country/', include('country.urls')),
     path('detail/<int:pk>/', WineDetailView.as_view(), name='detail'),
+    path('pairing/', include('pairing.urls')),
 ]
