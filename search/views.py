@@ -3,11 +3,18 @@ from django.http import HttpResponseRedirect
 from django.views.generic import FormView
 from search.forms import SearchForm
 from wine.models import Wine
+from django.core.paginator import Paginator
+
+
+
+
 
 class SearchView(FormView):
     template_name = 'search/index.html'
     form_class = SearchForm
     success_url = '.'
+    
+    
 
     def get(self, request, *args, **kwargs):
         name = request.GET.get('name')
@@ -16,7 +23,9 @@ class SearchView(FormView):
         sugar = request.GET.get('sugar')
         sour = request.GET.get('sour')
         # print(f"GET 요청의 파라미터 : ({name}, {wine_type}, {food}, {sugar}, {sour})")
+        page=request.GET.get('page', 1)
         wine_list = Wine.objects.all()
+        
         if name:
             wine_list = wine_list.filter(name__contains=name)
         if wine_type:
@@ -27,6 +36,14 @@ class SearchView(FormView):
             wine_list = wine_list.filter(sugar=sugar)
         if sour:
             wine_list = wine_list.filter(sour=sour)
+
+        
+        paginator = Paginator(wine_list, 2)
+        
+        wine_list=paginator.get_page(page)
+        
+        
+
         # print(wine_list)
         self.extra_context = {'wine_list': wine_list}
         return super().get(request, *args, **kwargs)

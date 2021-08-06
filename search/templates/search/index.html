@@ -61,7 +61,19 @@
                     </div>
                 </a>
             {% endfor %}
+
+            
         {% endif %}
+
+        {% if wine_list.has_previous %}
+            <a href="?page={{wine_list.number|add:-1}}">Previous</a>
+        {% endif %}
+        Page {{wine_list.number}} of {{wine_list.paginator.num_pages}}
+        {% if wine_list.has_next %}
+            <a href="?page={{wine_list.number|add:+1}}">Next</a>
+        {% endif %}
+            
+
     </div>
 </div>
 {% endblock content %}
