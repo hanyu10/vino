@@ -5,5 +5,8 @@ app_name = 'country'
 
 urlpatterns = [
     path('', globalView.as_view(), name='index'),
-    path('list/', GlobalListView.as_view(), name='list'),
+    path('france/', FranceListView.as_view(), name='france'),
+    path('spain/', SpainListView.as_view(), name='spain'),
+    path('italy/', ItalyListView.as_view(), name='italy'),
+    path('portugal/', PortugalListView.as_view(), name='portugal'),
 ]

@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content-header %}
+    <h1 class="text-center">지역별 와인</h1>
+{% endblock  %}
+
+{% block content %}
+<div class='row'>
+    <div class="col-md-2">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">지역별 와인</h3>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item"><a href="{% url 'wine:country:france' %}">프랑스</a></li>
+            <li class="list-group-item"><a href="{% url 'wine:country:italy' %}">이탈리아</a></li>
+            <li class="list-group-item"><a href="{% url 'wine:country:spain' %}">스페인</a></li>
+            <li class="list-group-item"><a href="{% url 'wine:country:portugal' %}">포르투칼</a></li>
+        </ul>
+    </div>
+    </div>
+        <style>
+        .jumbotron {
+            background-image: url("{% static 'images/portugal2.jpg' %}");
+            color: white;
+            background-size: cover;
+            border-radius: 10px;
+        }
+    </style>
+
+    <div class="container">
+        <div class="jumbotron py-3 mt-0">
+            <h1>포르투칼의 와인</h1>
+            <h2>리스본의 자연의 풍경을 눈으로만 보지말고 마셔보세요</h2>
+        </div>
+
+<div class="row mt-3">
+    <div class="col-md-4" 'text-primary'>
+        <img src="{% static 'images\wine4.jpg' %}" 'width=200 height=420' class="float-left" alt="Cinque Terre" >
+    </div>
+    <div class="col-md-8">
+    <h5>
+    포르투갈에서 생산되는 와인. 대표적인 와인으로 주정강화 와인인 포트 와인(Port Wine), 식전 와인으로 유명한 마데이라(Madeira)가 있으며 마테우스 로제와인, 비뉴 베르데 등 독특한 와인도 생산된다.</br></br>
+    포르투갈의 대표적인 주정강화 와인인 포트 와인(Port Wine)은 포르투갈 북부 도루강(Douro R.) 상류의 알토도루 지역에서 재배된 적포도와 청포도로 주로 만들어진다. 
+    </h5>
+    </div>
+</div>
+
+
+<p style="margin-top:45px;">
+
+<table class="table table-hover table-border">
+<tbody>
+<tr>
+<td>
+<img src="{% static 'images\portugal\Quinta da Raza, Alvarinho Trajadura.jpg' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>퀸타 다 라자, 알바리뉴 트라자두라</br>
+Quinta da Raza, Alvarinho Trajadura<button type="button" class="btn btn-primary">White</button>
+</dt>
+<dd>-국가/생산지역 : 포르투갈(Portugal) > 비뉴 베르데(Vinho Verde)</dd>
+<dd>-알코올 : 12~13 % </dd>
+<dd>-음용온도 : 8~10 ℃ </dd>
+</dl>
+<h6>
+과실향과 플로럴한 아로마가 인상적이다. 다양하고 복합적인 풍미와 긴 여운을 자랑하며 강렬하고 산뜻한 스타일의 와인이다. 뛰어난 품질의 알바리뉴와 트라자두라를 블렌딩하여 좋은 숙성 잠재력을 지니고 있다.
+</h6>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="{% static 'images\portugal\Quinta da Raza, Avesso Alvarinho.jpg' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>퀸타 다 라자, 아베소 알바리뉴</br>
+Quinta da Raza, Avesso Alvarinho<button type="button" class="btn btn-primary">White</button>
+</dt>
+<dd>-국가/생산지역 : 포르투갈(Portugal) > 비뉴 베르데(Vinho Verde)</dd>
+<dd>-알코올 : 13~14 % </dd>
+<dd>-음용온도 : 10~12 ℃ </dd>
+</dl>
+<h6>
+과실향과 플로럴한 아로마가 인상적이다. 입 안에서는 다양하고 복합적인 풍미와 긴 여운을 자랑하는 강렬하고 산뜻한 스타일의 와인이다. 뛰어난 품질의 아베소와 알바리뉴를 블렌딩하여 좋은 숙성 잠재력을 지니고 있다.
+</h6>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="{% static 'images\portugal\Quinta da Raza, Avesso.jpg' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>퀸타 다 라자, 아베소</br>
+Quinta da Raza, Avesso<button type="button" class="btn btn-primary">White</button>
+</dt>
+<dd>-국가/생산지역 : 포르투갈(Portugal) > 비뉴 베르데(Vinho Verde)</dd>
+<dd>-알코올 : 13~14 % </dd>
+<dd>-음용온도 : 8~10 ℃ </dd>
+</dl>
+<h6>
+밝은 레몬색을 띠고 산뜻한 과실향과 플로럴향이 매력적으로 조화를 이루며 긴 여운을 남기는 와인이다. 좋은 숙성 잠재력을 지니고 있어 후에 더욱 복합적인 풍미를 기대할 수 있다.
+</h6>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="{% static 'images\portugal\Quinta da Raza, Dom Diogo Arinto.jpg' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>퀸타 다 라자, 돔 디오고 아린토</br>
+Quinta da Raza, Dom Diogo Arinto<button type="button" class="btn btn-primary">White</button>
+</dt>
+<dd>-국가/생산지역 : 포르투갈(Portugal) > 비뉴 베르데(Vinho Verde)</dd>
+<dd>-알코올 : 12~13 % </dd>
+<dd>-음용온도 : 8~12 ℃ </dd>
+</dl>
+<h6>
+밝은 레몬색을 띠고 기분 좋은 과실향과 복합적인 풍미를 지녔다. 입 안에서는 오래도록 지속되는 산뜻한 맛이 인상적인 와인이다.
+</h6>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="{% static 'images\portugal\Quinta da Raza, Dom Diogo Azal.jpg' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>퀸타 다 라자, 돔 디오고 아잘</br>
+Quinta da Raza, Dom Diogo Azal<button type="button" class="btn btn-danger">Red</button>
+</dt>
+<dd>-국가/생산지역 : 포르투갈(Portugal) > 비뉴 베르데(Vinho Verde)</dd>
+<dd>-알코올 : 12~13 % </dd>
+<dd>-음용온도 : 8~10 ℃ </dd>
+</dl>
+<h6>
+밝은 레몬색을 띠고 시트러스와 청사과가 두드러지는 기분 좋은 과실향이 난다. 입 안에서는 산도의 밸런스가 좋고 매우 신선하고 산뜻한 스타일의 와인이다.
+</h6>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="{% static 'images\portugal\Burmester, Sotto Voce Reserve Ruby Port.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>버메스터, 소토 보체 리저브 루비 포트</br>
+Burmester, Sotto Voce Reserve Ruby Port<button type="button" class="btn btn-success">Fortified</button>
+</dt>
+<dd>-국가/생산지역 : 포르투갈(Portugal) > 도우루(Douro)</dd>
+<dd>-알코올 :19~20 % </dd>
+<dd>-음용온도 :14~16 ℃ </dd>
+</dl>
+<h6>
+깊은 바이올렛 색을 보이며 진한 야생 베리 향, 농밀한 과일향이 전체적으로 감싼다. 입 안에서는 따뜻하고 벨벳처럼 부드러운 질감의 농축미와 적당한 타닌의 밸런스가 긴 여운으로 남는 와인이다.
+</h6>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="{% static 'images\portugal\Burmester, Tavedo Red.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>버메스터, 타베도 레드</br>
+Burmester, Tavedo Red<button type="button" class="btn btn-success">Fortified</button>
+</dt>
+<dd>-국가/생산지역 : 포르투갈(Portugal) > 도우루(Douro)</dd>
+<dd>-알코올 : 12~13 % </dd>
+<dd>-음용온도 : 16~18 ℃ </dd>
+</dl>
+<h6>
+달콤한 라즈베리, 블랙 체리 등 붉은 과실류의 아로마와 초콜릿 풍미가 조화롭다. 어떤 음식과도 부담 없이 즐길 수 있는 와인이다.
+</h6>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="{% static 'images\portugal\Burmester, Tavedo Rose.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>버메스터, 타베도 로제</br>
+Burmester, Tavedo Rose<button type="button" class="btn btn-info">Rose</button>
+</dt>
+<dd>-국가/생산지역 : 포르투갈(Portugal) > 도우루(Douro)</dd>
+<dd>-알코올 : 12~13 % </dd>
+<dd>-음용온도 : 10~12 ℃ </dd>
+</dl>
+<h6>
+산뜻한 라즈베리, 레드커런트, 신선한 장미향과 은은하게 풍기고 입 안에서의 페퍼민트, 허브 부케를가 기분 좋은 와인이다.
+</h6>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="{% static 'images\portugal\Burmester, Tavedo White.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>버메스터, 타베도 화이트</br>
+Burmester, Tavedo White<button type="button" class="btn btn-primary">White</button>
+</dt>
+<dd>-국가/생산지역 : 포르투갈(Portugal) > 도우루(Douro)</dd>
+<dd>-알코올 : 12~13 % </dd>
+<dd>-음용온도 : 10~12 ℃ </dd>
+</dl>
+<h6>
+달콤한 허브, 꽃, 신선한 과일, 미네랄이 풍부하다. 입 안에서는 적당한 산미와 가벼운 바디가 입 안을 산뜻하게 하는 와인이다.
+</h6>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="{% static 'images\portugal\Burmester, White Port.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>버메스터, 화이트 포트</br>
+Burmester, White Port<button type="button" class="btn btn-primary">Whitee</button>
+</dt>
+<dd>-국가/생산지역 : 포르투갈(Portugal) > 도우루(Douro)</dd>
+<dd>-알코올 : 19~20 ℃ </dd>
+<dd>-음용온도 : 8~10 ℃ </dd>
+</dl>
+<h6>
+선명한 감귤색을 보이고 아카시아 꿀 향, 진한 흰 꽃 아로마가 인상적이다. 입 안에서는 적당한 산미와 당도가 부드러운 목 넘김으로 이어지며 레드 포트에 비하여 덜 부담스럽게 접근할 수 있는 와인이다. 크림쉐리, 마르살라 보다 비교적 가볍게 마실 수 있다.
+</h6>
+</td>
+</tr>
+
+</div>
+</tbody>
+</table>
+
+{% endblock content %}
