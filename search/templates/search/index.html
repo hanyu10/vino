@@ -1,6 +1,7 @@
 {% extends 'base_wine.html' %}
 
 {% load bootstrap4 %}
+{% load static %}
 
 {% block content-header %}
   <h1 class="text-center">와인 검색</h1>
@@ -28,7 +29,8 @@
     </div>
 
     <div class="col-sm-9 py-5">
-        <form action="." method="post" class="input-group rounded">
+        {% comment %} <form action="." method="post" class="input-group rounded"> {% endcomment %}
+        <form action="." method="post" class="rounded border p-3">
             {% csrf_token %}
             {% comment %} {% bootstrap_form form %} {% endcomment %}
             {{ form.as_p }}
@@ -42,8 +44,23 @@
                 <i class="fas fa-undo-alt"></i>
             </button>
         </form>
-        {% if result %}
-            결과 : 
+        {% if wine_list %}
+            <h2 class="mt-4">와인 리스트</h2>
+            {% for wine in wine_list %}
+                <a href="{% url 'wine:detail' wine.id %}" class="text-dark d-flex py-4">
+                    <img src="{% static 'images/'|add:wine.area.area|add:'/'|add:wine.name|add:'.png' %}" style="width:120px; height:220px"/>
+                    <div class="d-flex flex-column">
+                        <span><h3>{{wine.name}}</h3></span>
+                        <ul class="list-group list-group-horizontal mt-5 ml-3">
+                            <li class="list-group-item">{{wine.wine_type}}</li>
+                            <li class="list-group-item">{{wine.food}}</li>
+                            <li class="list-group-item">{{wine.sugar}}</li>
+                            <li class="list-group-item">{{wine.sour}}</li>
+                            <li class="list-group-item">{{wine.area}}</li>
+                        </ul>
+                    </div>
+                </a>
+            {% endfor %}
         {% endif %}
     </div>
 </div>

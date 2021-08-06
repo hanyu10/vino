@@ -1,0 +1,258 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content-header %}
+    <h1 class="text-center">와인과 어울리는 음식</h1>
+{% endblock  %}
+
+{% block content %}
+
+        <style>
+        .jumbotron {
+            background-color: gray;
+            color: white;
+            background-size: cover;
+            border-radius: 10px;
+			text : bold;
+        }
+    </style>
+
+    <div class="container">
+        <div class="jumbotron py-3 mt-0">
+            <h1>치즈와 어울리는 와인</h1>
+            <h2></h2>
+        </div>
+
+<p style="margin-top:45px;">
+
+<table class="table table-hover table-border">
+<tbody>
+<tr>
+<td>
+<img src="{% static 'images/italy/Cantina Colli Euganei, Prosecco Frizzante.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>칸티나 콜리 에우가네이, 프로세코 프리잔테</br>
+Cantina Colli Euganei, Prosecco Frizzante<button type="button" class="btn btn-primary">White</button>
+</dt>
+<dd>-국가/생산지역 : 이탈리아 </dd>
+<dd>-주요 품종 : 글레라</dd>
+</dl>
+<h6>
+높은 산도의 가벼운 바디감이 느껴지는 화이트 와인! <br>
+식전주로 사랑받는 화이트 와인으로 치즈는 물론 다양한 음식과 잘 어울리는 와인입니다. 
+<br>
+<br>
+<a href="http://127.0.0.1:8000/wine/detail/9/" class="alert-link" target="_blank">와인 정보 보기</a>
+</h6>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="{% static 'images/spain/Serra, Organic Brut Cava.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>호메 세라, 오가닉 브룻 까바</br>
+Serra, Organic Brut Cava <button type="button" class="btn btn-warning">Sparkling</button>
+</dt>
+<dd>-국가/생산지역 : 스페인 > 페네데스</dd>
+<dd>-주요 품종 : 마카베오</dd>
+</dl>
+<h6>
+시트러스 향이 가득한 스파클링 와인! <br>
+밝은 볏짚색을 띠는 시트러스 향이 가득한 스파클링 와인으로 탄탄한 구조감에 신선한 맛이 돋보이는 와인입니다.
+<br>
+<br>
+<a href="http://127.0.0.1:8000/wine/detail/1/" class="alert-link" target="_blank">와인 정보 보기</a>
+</h6>
+</td>
+</tr>
+
+
+<tr>
+<td>
+<img src="{% static 'images/france/Calmel & Joseph, Villa Blanche Grenache Rose.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>깔멜 앤 조셉, 빌라 블랑쉬 그르나쉬 로제</br>
+Calmel & Joseph, Villa Blanche Grenache Rose <button type="button" class="btn btn-info">Rose</button>
+</dt>
+<dd>-국가/생산지역 : 프랑스 > 서던 프랑스 > 랑그독 루씨용</dd>
+<dd>-주요 품종 : 그르나슈 그리</dd>
+</dl>
+<h6>
+화사한 아로마향이 돋보이는 드라이 로제 와인! <br>
+입 안에서 복숭아, 살구 등 흰 과일의 프루티한 맛과 시트러스 같은 활기찬 산미의 균형을 즐길 수 있고 아몬트, 민트 등의 터치가 은은하게 여운으로 남는 와인입니다.
+<br>
+<br>
+<a href="http://127.0.0.1:8000/wine/detail/27/" class="alert-link" target="_blank">와인 정보 보기</a>
+</h6>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="{% static 'images/spain/Piqueras, Wild Femented Verdejo.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>깔멜 앤 조셉, 레 떼루아 꼬뜨 뒤 루시옹 빌라쥐</br>
+Calmel & Joseph, Les Terroirs, Cotes du Roussillon <button type="button" class="btn btn-primary">White</button>
+</dt>
+<dd>-국가/생산지역 :  프랑스 > 서던 프랑스 >  랑그독 루씨용</dd>
+<dd>-주요 품종 : 시라/쉬라즈, 까리냥, 그르나슈</dd>
+</dl>
+<h6>
+블랙베리 같은 검은 과일의 아로마가 진하게 피어오르는 달달한 향의 와인! <br>
+입 안에서는 잘 녹아든 타닌의 부드러운 감촉을 즐길 수 있으며 블랙커런트, 후추, 시나몬, 감초, 민트 등 다양한 풍미가 긴 여운을 남기는 와인입니다.
+<br>
+<br>
+<a href="http://127.0.0.1:8000/wine/detail/29/" class="alert-link" target="_blank">와인 정보 보기</a>
+</h6>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="{% static 'images/spain/Piqueras, Wild Femented Verdejo.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>피케라스, 와일드 퍼멘티드 베르데호</br>
+Piqueras, Wild Femented Verdejo <button type="button" class="btn btn-primary">White</button>
+</dt>
+<dd>-국가/생산지역 : 스페인 > 알만사</dd>
+<dd>-주요 품종 : 베르데호</dd>
+</dl>
+<h6>
+세련된 삼나무 향의 화이트 와인! <br>
+묵직하고 자연스러운 산도가 좋은 균형감을 주는 와인입니다.
+<br>
+<br>
+<a href="http://127.0.0.1:8000/wine/detail/15/" class="alert-link" target="_blank">와인 정보 보기</a>
+</h6>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="{% static 'images/france/Calmel & Joseph, Les Terroirs, Corbieres.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>깔멜 앤 조셉, 레 떼루아 꼬르비에르</br>
+Calmel & Joseph, Les Terroirs, Corbieres <button type="button" class="btn btn-danger">Red</button>
+</dt>
+<dd>-국가/생산지역 : 프랑스 > 서던 프랑스 > 랑그독 루씨용</dd>
+<dd>-주요 품종 : 그르나슈, 시라/쉬라즈</dd>
+</dl>
+<h6>
+아로마에 민트 향과 스파이시 향이 더해진 레드 와인! <br>
+매끄럽게 다듬어진 타닌 맛을 즐길 수 있으며 그르나쉬 품종의 농밀한 과일 풍미가 입 안을 감싸고 시라 품종이 미들 팔렛을 채워주는 와인입니다.
+<br>
+<br>
+<a href="http://127.0.0.1:8000/wine/detail/30/" class="alert-link" target="_blank">와인 정보 보기</a>
+</h6>
+</td>
+</tr>
+
+
+<tr>
+<td>
+<img src="{% static 'images/spain/Las Moradas, Initio.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>라스 모라다스, 이니시오</br>
+Las Moradas, Initio <button type="button" class="btn btn-danger">Red</button>
+</dt>
+<dd>-국가/생산지역 : 스페인 > 비노스 데 마드리드</dd>
+<dd>-주요 품종 : 가르니차</dd>
+</dl>
+<h6>
+깨끗한 밝은 루비색의 다양한 향이 느껴지는 와인! <br>
+살짝 가넷 빛이 올라오는 깨끗하고 밝은 루비색에 블랙베리, 자두, 오렌지 꽃, 코코아, 야생허브, 감초, 미네랄 등을 느낄 수 있는 매우 복합적인 와인이다. 입 안에서는 산미가 워낙 좋아서 생동감이 느껴지며, 우아하고, 탄탄한 구조에 오래도록 지속되는 여운을 지니고 있는 와인입니다.
+<br>
+<br>
+<a href="http://127.0.0.1:8000/wine/detail/16/" class="alert-link" target="_blank">와인 정보 보기</a>
+</h6>
+</td>
+</tr>
+
+
+<tr>
+<td>
+<img src="{% static 'images/spain/Lustau, Amontillado Los Arcos Solera Reserva.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>루스토, 아몬띠야도 로스 아르코스 솔레라 레세르바</br>
+Lustau, Amontillado Los Arcos Solera Reserva <button type="button" class="btn btn-danger">Red</button>
+</dt>
+<dd>-국가/생산지역 : 스페인 > 헤레즈-헤레스-셰리</dd>
+<dd>-주요 품종 : 팔로미노</dd>
+</dl>
+<h6>
+진한 호박색의 풍부한 견과류 향이 느껴지는 포트 와인! <br>
+진한 호박색을 띠고 있으며 오랜 숙성에서 배어나는 풍부한 견과류 향이 특징이다. 입 안에서 느껴지는 감촉이 부드럽고 헤이즐넛 향이 감도는 긴 여운이 인상적이다. 알코올 도수 18.5%의 드라이한 아몬띠야도 셰리 와인입니다. 
+<br>
+<br>
+<a href="http://127.0.0.1:8000/wine/detail/21/" class="alert-link" target="_blank">와인 정보 보기</a>
+</h6>
+</td>
+</tr>
+
+
+<tr>
+<td>
+<img src="{% static 'images/portugal/Burmester, Tavedo Rose.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>버메스터, 타베도 로제</br>
+Burmester, Tavedo Rose <button type="button" class="btn btn-warning">Rose</button>
+</dt>
+<dd>-국가/생산지역 : 포르투갈 > 도우루</dd>
+<dd>-주요 품종 : 틴타 로리즈, 틴타 바로카, 틴타 아마렐라</dd>
+</dl>
+<h6>
+산뜻한 장미향의 버메스터 로제 와인! <br>
+산뜻한 라즈베리, 레드커런트, 신선한 장미향과 은은하게 풍기고 입 안에서의 페퍼민트, 허브 부케를가 기분 좋은 와인입니다.
+<br>
+<br>
+<a href="http://127.0.0.1:8000/wine/detail/38/" class="alert-link" target="_blank">와인 정보 보기</a>
+</h6>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="{% static 'images/france/Chateau Courac, Cotes du Rhone.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>샤또 꾸락, 꼬뜨 뒤 론</br>
+Chateau Courac, Cotes du Rhone <button type="button" class="btn btn-danger">Red</button>
+</dt>
+<dd>-국가/생산지역 : 프랑스 > 론 > 꼬뜨 뒤 론</dd>
+<dd>-주요 품종 : 그르나슈, 시라/쉬라즈, 쌩쏘, 까리냥</dd>
+</dl>
+<h6>
+라즈베리 향이 가득한 레드 와인! <br>
+짙은 루비색을 띠고 신선한 라즈베리와 체리 같은 붉은 과실의 아로마를 강렬하게 풍긴다. 입 안을 가득 채운 아름다운 아로마는 지속적으로 강렬하면서 생동감 넘치는 모습을 보여주는 와인입니다.
+<br>
+<br>
+<a href="http://127.0.0.1:8000/wine/detail/24/" class="alert-link" target="_blank">와인 정보 보기</a>
+</h6>
+</td>
+</tr>
+
+</tbody>
+</table>
+
+
+
+{% endblock content %}

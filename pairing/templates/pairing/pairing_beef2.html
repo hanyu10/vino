@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content-header %}
+    <h1 class="text-center">와인과 어울리는 요리</h1>
+{% endblock  %}
+
+{% block content %}
+
+        <style>
+        .jumbotron {
+            background-image: src="{% static 'images/beef_bg.jpg' %}";
+            color: white;
+            background-size: cover;
+            border-radius: 10px;
+        }
+    </style>
+
+    <div class="container">
+        <div class="jumbotron py-3 mt-0">
+            <h1>소고기와 어울리는 와인</h1>
+            <h2>소고기요리와 어울리는 다양한 와인을 찾아보세요!</h2>
+        </div>
+
+<p style="margin-top:45px;">
+
+<table class="table table-hover table-border">
+<tbody>
+<tr>
+<td>
+<img src="{% static 'images/france/Calmel & Joseph, La Madone.png' %}" 'width=200px height=200' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>깔멜 앤 조셉, 라 마돈느</br>
+Calmel & Joseph, La Madone <button type="button" class="btn btn-danger">Red</button>
+</dt>
+<dd>-국가/생산지역 : < 프랑스(France) > 서던 프랑스(Southern France) > 랑그독 루씨용(Languedoc Roussillon)</dd>
+<dd>-알코올 : 14~15 % </dd>
+<dd>-음용온도 : 16~18 ℃ </dd>
+</dl>
+<h6>
+매혹적인 가넷색을 띠고 블랙 커런트, 블랙베리 등의 과일 향과 시나몬 등 향신료 향이 조화롭게 어우러진다. 입 안에서는 파워풀하면서 우아한 캐릭터를 보여주며 검붉은 과일과 향신료, 자잘한 타닌감이 느껴지고 기본 좋은 여운이 길게 남는 와인이다.
+꼬르비에 아펠레이션에서 수확한 포도로 양조했으며 엄선한 포도의 줄기를 제거하고 두 품종을 함께 발효했다. 25℃ 온도에서 약 4주간 마세레이션과 알코올 발효를 거쳐 젖산발효도 진행했다. 발효가 끝난 와인은 2년 된 배럴에 담아 15개월간 숙성을 거쳐 출시한다.
+</h6>
+</td>
+</tr>
+
+
+
+
+{% endblock content %}

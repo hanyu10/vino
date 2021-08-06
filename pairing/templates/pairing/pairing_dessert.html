@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content-header %}
+    <h1 class="text-center">와인과 어울리는 음식</h1>
+{% endblock  %}
+
+{% block content %}
+
+        <style>
+        .jumbotron {
+            background-color: gray;
+            color: white;
+            background-size: cover;
+            border-radius: 10px;
+			text : bold;
+        }
+    </style>
+
+    <div class="container">
+        <div class="jumbotron py-3 mt-0">
+            <h1>달콤한 디저트와 어울리는 와인</h1>
+            <h2></h2>
+        </div>
+
+<p style="margin-top:45px;">
+
+<table class="table table-hover table-border">
+<tbody>
+<tr>
+<td>
+<img src="{% static 'images/portugal/Quinta da Raza, Avesso.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>퀸타 다 라자, 아베소/br>
+Quinta da Raza, Avesso<button type="button" class="btn btn-primary">White</button>
+</dt>
+<dd>-국가/생산지역 : 포르투갈 > 비뉴 베르데</dd>
+<dd>-주요 품종 : 아베소</dd>
+</dl>
+<h6>
+산뜻한 과실향의 화이트 와인! <br>
+밝은 레몬색을 띠고 산뜻한 과실향과 플로럴향이 매력적으로 조화를 이루며 긴 여운을 남기는 와인입니다.
+<br>
+<br>
+<a href="http://127.0.0.1:8000/wine/detail/33/" class="alert-link" target="_blank">와인 정보 보기</a>
+</h6>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="{% static 'images/portugal/Quinta da Raza, Dom Diogo Arinto.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+</td>
+<td>
+<dl>
+<dt>퀸타 다 라자, 돔 디오고 아린토/br>
+Quinta da Raza, Dom Diogo Arinto<button type="button" class="btn btn-primary">White</button>
+</dt>
+<dd>-국가/생산지역 : 포르투갈 > 비뉴 베르데</dd>
+<dd>-주요 품종 : 아린토</dd>
+</dl>
+<h6>
+산뜻한 과실향의 화이트 와인! <br>
+밝은 레몬색을 띠고 산뜻한 과실향이 지속되는 매력적인 와인입니다.
+<br>
+<br>
+<a href="http://127.0.0.1:8000/wine/detail/36/" class="alert-link" target="_blank">와인 정보 보기</a>
+</h6>
+</td>
+</tr>
+
+
+
+
+</tbody>
+</table>
+
+
+
+{% endblock content %}
