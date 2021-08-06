@@ -38,8 +38,7 @@ class SearchView(FormView):
             wine_list = wine_list.filter(sour=sour)
 
         
-        paginator = Paginator(wine_list, 2)
-        
+        paginator = Paginator(wine_list, 5)
         wine_list=paginator.get_page(page)
         
         

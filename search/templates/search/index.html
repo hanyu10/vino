@@ -58,20 +58,23 @@
                             <li class="list-group-item">{{wine.sour}}</li>
                             <li class="list-group-item">{{wine.area}}</li>
                         </ul>
+                        
                     </div>
                 </a>
             {% endfor %}
 
-            
+            {% if wine_list.has_previous %}
+            <a href="?page={{wine_list.number|add:-1}}">Previous</a>
+            {% endif %}
+            Page {{wine_list.number}} of {{wine_list.paginator.num_pages}}
+            {% if wine_list.has_next %}
+            <a href="?page={{wine_list.number|add:+1}}">Next</a>
+            {% endif %}
+
         {% endif %}
 
-        {% if wine_list.has_previous %}
-            <a href="?page={{wine_list.number|add:-1}}">Previous</a>
-        {% endif %}
-        Page {{wine_list.number}} of {{wine_list.paginator.num_pages}}
-        {% if wine_list.has_next %}
-            <a href="?page={{wine_list.number|add:+1}}">Next</a>
-        {% endif %}
+            
+        
             
 
     </div>
