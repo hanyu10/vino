@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from review.models import Post
+from wine.models import Wine
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from accounts.views import OwnerOnlyMixin
@@ -13,16 +14,30 @@ class PostListView(ListView):
 
   def get(self, request, *args, **kwargs):
     wine = request.GET.get('wine')
+    owner = request.GET.get('owner')
+    selected_wine = []
     if wine:
       self.queryset = Post.objects.filter(wine=wine)
+      selected_wine = Wine.objects.get(pk=wine)
+    elif owner:
+      self.queryset = Post.objects.filter(owner=owner)
+    # 리뷰가 등록된 와인
+    reviewd_wines = set()
+    for post in Post.objects.all():
+      reviewd_wines.add(post.wine)
+    self.extra_context = {
+      'reviewd_wines': reviewd_wines,
+      'selected_wine': selected_wine
+    }
     return super().get(request, *args, **kwargs)
 
 class PostDetailView(DetailView):
+  context_object_name = 'post'
   model = Post
 
 class PostCreateView(LoginRequiredMixin, CreateView):
   model = Post
-  fields = ['title', 'content']
+  fields = ['wine', 'title', 'content']
   success_url = reverse_lazy('review:index')
   
   def form_valid(self, form):
