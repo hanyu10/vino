@@ -9,9 +9,9 @@ class Post(models.Model):
     create_dt = models.DateTimeField('CREATE DATE', auto_now_add=True)
     modify_dt = models.DateTimeField('MODIFY DATE', auto_now=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, 
-            verbose_name='OWNER', blank=True, null=True)
+            verbose_name='Owner', blank=True, null=True)
     wine = models.ForeignKey(Wine, on_delete=models.CASCADE, 
-            verbose_name='OWNER', blank=True, null=True)
+            verbose_name='와인', blank=True, null=True)
  
     class Meta:
         verbose_name = 'post'
