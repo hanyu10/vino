@@ -26,7 +26,6 @@ class ShopView(FormView):
             shop_query.append(f'name={name}')
         if area:
             shop_query.append(f'area={area}')
-        
 
         self.extra_context = {
             'shop_list': shop_list,
