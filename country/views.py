@@ -6,7 +6,7 @@ from wine.models import Wine, Country
 
 
 class globalView(TemplateView):
-    template_name = 'country/country_list.html'
+    template_name = 'country/area.html'
 
 class FranceListView(TemplateView):
     template_name = 'country/france_list.html'
@@ -20,11 +20,7 @@ class ItalyListView(TemplateView):
 class PortugalListView(TemplateView):
     template_name = 'country/portugal_list.html'
 
-class CountryListView(ListView):
-    model = Country
 
-class CountryDetailView(DetailView):
-    model = Wine
 
 
 # Create your views here.
