@@ -1,37 +1,42 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content-header %}
     <h1 class="text-center alert alert-secondary">Pairing food</h1>
 {% endblock  %}
 
-{% load static %}
-
 {% block content-wrapper %}
 
-<div class="card">
-        <div class="card-body">
-
-    <div class="row">
-
-    <div class="col-sm-6 py-10 mt-20 ">
-        <div class="mx-auto" style="width:800px">
-            <img class="card-img-fluid" src="{% static 'images/main1.png' %}" alt="Card image">
-                <div class="card-img-cover" style="text-align:center">
-                <h2 class="card-title text-black font-weight-bold">음식별 어울리는 와인</h2>
-                <a href="{% url 'wine:pairing:index' %}" class="btn btn-black">바로가기 </a>
+<div class="m-5 row justify-content-around">
+    <div class="col-lg-5 py-3">
+        <div class="card">
+            <img class="card-img-top mx-auto rounded"
+                src="{% static 'images/main1.png' %}"
+                alt="음식별 어울리는 와인">
+            <div class="card-body">
+                <div class="mx-auto text-center">
+                    <h2 class="card-title font-weight-bold p-3">음식별 어울리는 와인</h2>
+                    <a href="{% url 'wine:pairing:index' %}" class="btn btn-outline-dark">바로가기 </a>
                 </div>
-            </div>
-    </div>
-
-    <div class="col-sm-6 py-10 ">
-        <div class="mx-auto" style="width:800px">
-            <img class="card-fluid" src="{% static 'images/winerecipe.png' %}" alt="Card image">
-            <div class="card-img-cover" style="text-align:center">
-                <h2 class="card-title text-black font-weight-bold">와인으로 만드는 요리</h2>
-                <a href="{% url 'wine:pairing:cook' %}" class="btn btn-black">바로가기</a>
             </div>
         </div>
     </div>
+
+    <div class="col-lg-5 py-3">
+        <div class="card">
+            <img class="card-img-top mx-auto rounded"
+                src="{% static 'images/winerecipe.png' %}"
+                alt="와인으로 만드는 요리">
+            <div class="card-body">
+                <div class="mx-auto text-center">
+                    <h2 class="card-title font-weight-bold p-3">와인으로 만드는 요리</h2>
+                    <a href="{% url 'wine:pairing:cook' %}" class="btn btn-outline-dark">바로가기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
     
 

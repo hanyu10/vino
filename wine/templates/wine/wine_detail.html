@@ -33,10 +33,15 @@
     <p>와인 설명</p>
   </div>
   <div class="my-5">
-    <h3>리뷰</h3>
-    {% for review in review_list %}
-      {% include './small_review.html'%}
-    {% endfor %}
+    <h3 class="text-center py-3 border-top border-dark">
+      <i class="fas fa-clipboard-list"></i> 리뷰</h3>
+      {% if review_list %}
+        {% for review in review_list %}
+          {% include './small_review.html'%}
+        {% endfor %}
+      {% else %}
+        <div class="text-center">작성된 리뷰가 없습니다.</div>
+      {% endif %}
   </div>
 </div>
 {% endblock content %}
