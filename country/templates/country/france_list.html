@@ -1,10 +1,10 @@
-{% extends 'base_wine.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% block content-header %}
     <h1 class="text-center">지역별 와인</h1>
 {% endblock  %}
 
-{% block content %}
+{% block content-wrapper %}
 <div class='row'>
     <div class="col-md-2">
     <div class="panel panel-info">
@@ -250,4 +250,4 @@ Thomas Kim Desruets Brut<button type="button" class="btn btn-warning">Sparkling<
 </tbody>
 </table>
 
-{% endblock content %}
+{% endblock content-wrapper %}
