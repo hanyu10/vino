@@ -37,7 +37,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
   model = Post
-  fields = ['wine', 'title', 'content']
+  fields = ['wine', 'title', 'content', 'rating']
   success_url = reverse_lazy('review:index')
   
   def form_valid(self, form):
@@ -46,7 +46,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(OwnerOnlyMixin, UpdateView):
   model = Post
-  fields = ['title', 'content']
+  fields = ['wine', 'title', 'content', 'rating']
   success_url = reverse_lazy('review:index')
 
 class PostDeleteView(OwnerOnlyMixin, DeleteView) :

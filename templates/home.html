@@ -6,13 +6,12 @@
 
 {% block content-wrapper %}
     <div class="col-sm-8 mx-auto py-5">
-        <div class="input-group rounded">
-            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                aria-describedby="search-addon" />
-            <span class="input-group-text border-0" id="search-addon">
+        <form action="{% url 'wine:search:index' %}" class="input-group rounded">
+            <input type="text" class="form-control rounded" placeholder="와인 검색" name="name"/>
+            <button class="input-group-text border-0" id="search-addon">
                 <i class="fas fa-search"></i>
-            </span>
-        </div>
+            </button>
+        </form>
     </div>
 
     <div class="row justify-content-center my-5">
