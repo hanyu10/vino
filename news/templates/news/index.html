@@ -20,11 +20,11 @@ a h4:hover {
 {% for post in news %}
 <div class="border-bottom py-3">
     {% autoescape off %}
-    <a href="{{ post.link }}" class="text-dark">
+    <a href="{{ post.link }}" class="text-dark" target="_blank">
         <h4>{{ post.title }}</h3>
         <p>{{ post.description }}</p>
     </a>
-    <a href="{{ post.originallink }}" class="ml-auto">원문 보기</a>
+    <a href="{{ post.originallink }}" class="ml-auto" target="_blank">원문 보기</a>
     <span class="float-right">{{ post.pubDate }}</span>
     {% endautoescape %}
 </div>
