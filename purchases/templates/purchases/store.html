@@ -9,37 +9,33 @@
 
 {% block content %}
 <div class="py-3">
-    <form action="." method="post" class="rounded border p-3">
-        {% csrf_token %}
-        {{ form.as_p }}
-        
-        <button type="submit" class="btn btn-primary btn-sm" >
-            <i class="fas fa-search"></i>
-        </button>
-        <button type="reset" class="btn btn-primary btn-sm" >
-            <i class="fas fa-undo-alt"></i>
-        </button>
+    <form action="." class="rounded border p-3">
+        {% bootstrap_form form %}
+        <div class="text-right">
+            <button type="reset" class="btn btn-outline-warning btn-md" >
+                <i class="fas fa-undo-alt"></i> 초기화
+            </button>
+            <button type="submit" class="btn btn-primary btn-md" >
+                <i class="fas fa-search"></i> 검색
+            </button>
+        </div>
     </form>
     {% if shop_list %}
         <h2 class="mt-4">오프라인 상점 리스트</h2>
         {% for shop in shop_list %}
             <a href="{% url 'purchases:detail' shop.id %}" class="text-dark d-flex py-4 border-bottom">
-               
                 <div class="d-flex flex-column">
-                    <span><h3>{{shop.shop_name}}</h3></span>
+                    <span><h3>{{shop.name}}</h3></span>
                     <ul class="list-group list-group-horizontal mt-5 ml-3">
-                        <li class="list-group-item">{{shop.shop_name}}</li>
-                        <li class="list-group-item">{{shop.shop_area}}</li>
-                        <li class="list-group-item">{{shop.shop_address}}</li>
-                        
+                        <li class="list-group-item">{{shop.name}}</li>
+                        <li class="list-group-item">{{shop.area}}</li>
+                        <li class="list-group-item">{{shop.address}}</li>
                     </ul>
                 </div>
             </a>
         {% endfor %}
     {% endif %}
 
-
-    
     <!-- 페이징처리 시작 -->
     <ul class="pagination justify-content-center my-4">
         <!-- 이전페이지 -->
@@ -92,32 +88,5 @@
         {% endif %}
     </ul>
     <!-- 페이징처리 끝 -->
-
-    {% comment %} {% if wine_list.has_previous %}
-        {% if wine_query %}
-            <a href="?page={{wine_list.number|add:-1}}&{{wine_query}}">Previous</a>
-        {% else %}
-            <a href="?page={{wine_list.number|add:-1}}">Previous</a>
-        {% endif %}
-    {% endif %}
-    Page {{wine_list.number}} of {{wine_list.paginator.num_pages}}
-    {% if wine_list.has_next %}
-        {% if wine_query %}
-            <a href="?page={{wine_list.number|add:+1}}&{{wine_query}}">Next</a>
-        {% else %}
-            <a href="?page={{wine_list.number|add:+1}}">Next</a>
-        {% endif %}
-    {% endif %} {% endcomment %}
 </div>
 {% endblock content %}
-
-{% comment %} 이렇게 하나씩 구현할 수도 있는듯 (https://docs.djangoproject.com/en/3.2/topics/forms/)
-{% for field in form %}
-    <div class="fieldWrapper">
-        {{ field.errors }}
-        {{ field.label_tag }} {{ field }}
-        {% if field.help_text %}
-        <p class="help">{{ field.help_text|safe }}</p>
-        {% endif %}
-    </div>
-{% endfor %} {% endcomment %}

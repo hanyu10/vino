@@ -3,6 +3,14 @@
 {% load bootstrap4 %}
 {% load static %}
 
+{% block style %}
+<style>
+    a:hover {
+        text-decoration: none;
+    }
+</style>
+{% endblock style %}
+
 {% block content-header %}
   <h1 class="text-center mb-3">와인 검색</h1>
 {% endblock content-header %}
@@ -22,21 +30,21 @@
     </form>
     {% if wine_list %}
     <div class="mt-5">
-        <h2 class="text-center bg-dark text-light rounded p-3 mt-5">검색 결과</h2>
+        <h2 class="row justify-content-center bg-dark text-light rounded p-3 mt-5">검색 결과</h2>
         {% for wine in wine_list %}
-            <a href="{% url 'wine:detail' wine.id %}" class="text-dark d-flex py-4 border-bottom">
-                <img src="{% static 'images/'|add:wine.area.area|add:'/'|add:wine.name|add:'.png' %}" style="width:120px; height:220px"/>
-                <div class="d-flex flex-column">
-                    <span><h3>{{wine.name}}</h3></span>
-                    <ul class="list-group list-group-horizontal mt-5 ml-3">
-                        <li class="list-group-item">{{wine.wine_type}}</li>
-                        <li class="list-group-item">{{wine.food}}</li>
-                        <li class="list-group-item">{{wine.sugar}}</li>
-                        <li class="list-group-item">{{wine.sour}}</li>
-                        <li class="list-group-item">{{wine.area}}</li>
-                    </ul>
-                </div>
-            </a>
+            <div class="py-4 border-bottom">
+                <a href="{% url 'wine:detail' wine.id %}" class="d-flex">
+                    <img src="{% static 'images/'|add:wine.area.area|add:'/'|add:wine.name|add:'.png' %}" style="width:180px; height:300px"/>
+                    <div class="text-dark px-3 d-flex flex-column flex-grow-1">
+                        <h5 class="mb-3 d-flex">
+                            <span class="mr-auto">{{wine.name}}</span>
+                            {% include 'common/wine_type_tag.html' %}
+                        </h5>
+                        <p>지역 : {{wine.area}}</p>
+                        <p>어울리는 요리 : {{wine.food}}</p>
+                    </div>
+                </a>
+            </div>
         {% endfor %}
     </div>
     {% endif %}
