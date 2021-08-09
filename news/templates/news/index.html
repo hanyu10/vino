@@ -1,18 +1,32 @@
 {% extends 'base_wine.html' %}
 
-{% block content-header %}뉴스{% endblock content-header %}
+{% block content-header %}
+<h1 class="text-center mb-4"><i class="nav-icon fas fa-newspaper"></i> 와인 뉴스</h1>
+{% endblock content-header %}
+
+{% block style %}
+<style>
+a:hover {
+    text-decoration: none;
+}
+a h4:hover {
+    color: gray;
+}
+</style>
+{% endblock style %}
 
 {% block content %}
 
 {% for post in news %}
-<div class="border-bottom">
-  {% autoescape off %}
-  <a href="{{ post.link }}" class="text-dark">{{ post.title }}</a>
-  <span class="ml-auto">{{ post.pubDate }}</span>
-  <a href="{{ post.link }}"><p>{{ post.description }}</p></a>
-  
-  <a href="{{ post.originallink }}" class="ml-auto">원문 보기</a>
-  {% endautoescape %}
+<div class="border-bottom py-3">
+    {% autoescape off %}
+    <a href="{{ post.link }}" class="text-dark">
+        <h4>{{ post.title }}</h3>
+        <p>{{ post.description }}</p>
+    </a>
+    <a href="{{ post.originallink }}" class="ml-auto">원문 보기</a>
+    <span class="float-right">{{ post.pubDate }}</span>
+    {% endautoescape %}
 </div>
 {% endfor %}
 
