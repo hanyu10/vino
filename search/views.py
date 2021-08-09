@@ -1,5 +1,3 @@
-from django.db.models import query
-from django.http import HttpResponseRedirect
 from django.views.generic import FormView
 from search.forms import SearchForm
 from wine.models import Wine
@@ -16,10 +14,11 @@ class SearchView(FormView):
         food = request.GET.get('food')
         sugar = request.GET.get('sugar')
         sour = request.GET.get('sour')
+
+        # 검색 결과 전달
         wine_list = Wine.objects.all()
-        
         if name:
-            wine_list = wine_list.filter(name__contains=name)
+            wine_list = wine_list.filter(name__icontains=name) # icontains는 대소문자 구분 안함
         if wine_type:
             wine_list = wine_list.filter(wine_type=wine_type)
         if food:
@@ -29,6 +28,7 @@ class SearchView(FormView):
         if sour:
             wine_list = wine_list.filter(sour=sour)
 
+        # 페이지네이션
         paginator = Paginator(wine_list, 5)
         page = request.GET.get('page', 1)
         wine_list = paginator.get_page(page)
@@ -45,7 +45,6 @@ class SearchView(FormView):
             wine_query.append(f'sour={sour}')
         if wine_query:
             wine_query = '&'.join(wine_query)
-        # print(wine_query)
 
         self.extra_context = {
             'wine_list': wine_list,
@@ -53,26 +52,25 @@ class SearchView(FormView):
         }
         return super().get(request, *args, **kwargs)
 
-    def post(self, request, *args, **kwargs):
-        name = request.POST.get('name')
-        wine_type = request.POST.get('wine_type')
-        food = request.POST.get('food')
-        sugar = request.POST.get('sugar')
-        sour = request.POST.get('sour')
-        # print(f"POST 요청의 form 파라미터 : ({name}, {wine_type}, {food}, {sugar}, {sour})")
-        self.success_url = f'./'
-        wine_query = []
-        if name:
-            wine_query.append(f'name={name}')
-        if wine_type:
-            wine_query.append(f'wine_type={wine_type}')
-        if food:
-            wine_query.append(f'food={food}')
-        if sugar:
-            wine_query.append(f'sugar={sugar}')
-        if sour:
-            wine_query.append(f'sour={sour}')
-        if wine_query:
-            self.success_url += '?' + '&'.join(wine_query)
-        return super().post(request, *args, **kwargs)
+    # def post(self, request, *args, **kwargs):
+    #     name = request.POST.get('name')
+    #     wine_type = request.POST.get('wine_type')
+    #     food = request.POST.get('food')
+    #     sugar = request.POST.get('sugar')
+    #     sour = request.POST.get('sour')
 
+    #     self.success_url = './'
+    #     wine_query = []
+    #     if name:
+    #         wine_query.append(f'name={name}')
+    #     if wine_type:
+    #         wine_query.append(f'wine_type={wine_type}')
+    #     if food:
+    #         wine_query.append(f'food={food}')
+    #     if sugar:
+    #         wine_query.append(f'sugar={sugar}')
+    #     if sour:
+    #         wine_query.append(f'sour={sour}')
+    #     if wine_query:
+    #         self.success_url += '?' + '&'.join(wine_query)
+    #     return super().post(request, *args, **kwargs)
