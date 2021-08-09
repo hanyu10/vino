@@ -26,5 +26,8 @@ urlpatterns = [
     path('wine/', include('wine.urls')),
     path('wiki/', include('wiki.urls')),
     path('review/', include('review.urls')),
+
+    path('purchases/', include('purchases.urls')),
     # path('news/', include('news.urls')),
+
 ]

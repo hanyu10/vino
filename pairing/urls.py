@@ -4,7 +4,12 @@ from .views import *
 app_name='pairing'
 
 urlpatterns = [
-    path('', PairingView.as_view(), name='index'),
+
+    path('', PairingMainView.as_view(), name='main'),
+
+    path('index/', PairingView.as_view(), name='index'),
+
+    path('cook/', PairingView_cook.as_view(), name='cook'),
     # beef 링크
     path('beef/', PairingView_beef.as_view(), name='beef'),
     # chiken 링크
@@ -17,7 +22,7 @@ urlpatterns = [
     path('fish/', PairingView_fish.as_view(), name='fish'),
 
     # lamb 링크
-    path('fish/', PairingView_lamb.as_view(), name='lamb'),
+    path('lamb/', PairingView_lamb.as_view(), name='lamb'),
 
      # pasta 링크
     path('pasta/', PairingView_pasta.as_view(), name='pasta'),

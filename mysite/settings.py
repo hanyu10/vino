@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'news',
     'review',
     'country',
+    'purchases',
+    
 ]
 
 MIDDLEWARE = [
