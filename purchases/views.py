@@ -9,23 +9,23 @@ class ShopView(FormView):
     success_url = '.'
 
     def get(self, request, *args, **kwargs):
-        shop_name = request.GET.get('shop_name')
-        shop_area = request.GET.get('shop_area')
+        name = request.GET.get('name')
+        area = request.GET.get('area')
         shop_list = Shop.objects.all()
         
-        if shop_name:
-            shop_list = shop_list.filter(name__icontains=shop_name)
-        if shop_area:
-            shop_list = shop_list.filter(area=shop_area)
+        if name:
+            shop_list = shop_list.filter(name__icontains=name)
+        if area:
+            shop_list = shop_list.filter(area=area)
        
         paginator = Paginator(shop_list, 5)
         page = request.GET.get('page', 1)
         shop_list = paginator.get_page(page)
         shop_query = []
-        if shop_name:
-            shop_query.append(f'name={shop_name}')
-        if shop_area:
-            shop_query.append(f'wine_type={shop_area}')
+        if name:
+            shop_query.append(f'name={name}')
+        if area:
+            shop_query.append(f'area={area}')
         
 
         self.extra_context = {
