@@ -1,10 +1,28 @@
-{% extends 'base.html' %}
+{% extends 'base_wine2.html' %}
+
 {% load static %}
 {% block content-header %}
     <h1 class="text-center">와인과 어울리는 음식</h1>
-{% endblock  %}
+{% endblock content-header  %}
 
-{% block content-wrapper %}
+{% block style %}
+<style>
+    a:hover {
+        text-decoration: none;
+    }
+    
+    h3 {
+        margin-top: 3rem;
+    }
+
+    h4 {
+        margin-top: 2rem;
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+
 
         <style>
         .jumbotron {
@@ -69,6 +87,7 @@ Quinta da Raza, Dom Diogo Arinto<button type="button" class="btn btn-primary">Wh
 </h6>
 </td>
 </tr>
+</div>
 
 
 
@@ -78,4 +97,4 @@ Quinta da Raza, Dom Diogo Arinto<button type="button" class="btn btn-primary">Wh
 
 
 
-{% endblock content-wrapper %}
+{% endblock content %}

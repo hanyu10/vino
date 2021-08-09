@@ -1,10 +1,30 @@
-{% extends 'base.html' %}
+{% extends 'base_wine2.html' %}
 {% load static %}
 {% block content-header %}
     <h1 class="text-center">와인과 어울리는 음식</h1>
-{% endblock  %}
+{% endblock content-header %}
 
-{% block content-wrapper %}
+
+{% block style %}
+<style>
+    a:hover {
+        text-decoration: none;
+    }
+    
+    h3 {
+        margin-top: 3rem;
+    }
+
+    h4 {
+        margin-top: 2rem;
+    }
+</style>
+{% endblock style %}
+
+
+{% block content %}
+
+
 
         <style>
         .jumbotron {
@@ -161,7 +181,7 @@ Alejandro Fernandez, 20 Aldeas <button type="button" class="btn btn-dangery">Red
 
 <tr>
 <td>
-<img src="{% static 'images/italy/Cantine Povero, Moscato d'Asti'Campo del Palio.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
+<img src="{% static 'images/italy/Cantine.png' %}" 'width=200px height=300' class="float-left" alt="Cinque Terre" >
 </td>
 <td>
 <dl>
@@ -181,9 +201,11 @@ Cantine Povero, Moscato d'Asti'Campo del Palio' <button type="button" class="btn
 </td>
 </tr>
 
+</div>
+
 </tbody>
 </table>
 
 
 
-{% endblock content-wrapper %}
+{% endblock content %}

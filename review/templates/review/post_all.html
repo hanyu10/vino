@@ -36,10 +36,15 @@
 {% endblock %}
 
 {% block content-wrapper %}
-{% comment %} 와인 선택 {% endcomment %}
-<div class="col-sm-8 mx-auto">
+<div class="col-sm-8 mx-auto" style="min-height: 500px">
+    {% comment %} 와인 선택 {% endcomment %}
     <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false">
             {% if selected_wine %} {{ selected_wine }}
             {% else %} 전체 보기
             {% endif %}
@@ -50,9 +55,7 @@
             {% endfor %}
         </div>
     </div>
-</div>
-{% comment %} 리뷰 리스트 {% endcomment %}
-<div class="col-sm-8 mx-auto mb-3">
+    {% comment %} 리뷰 리스트 {% endcomment %}
     <div class="p-3 border" id="review_list">
         {% autoescape off %}
         {% for post in posts %}

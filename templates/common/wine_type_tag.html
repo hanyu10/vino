@@ -1,0 +1,11 @@
+{% if wine.wine_type == 'Red' %}
+    <span class="badge rounded-pill bg-danger text-light p-2 d-flex align-items-center ml-auto">Red</span>
+{% elif wine.wine_type == 'Sparkling'%}
+    <span class="badge rounded-pill bg-warning text-light p-2 d-flex align-items-center ml-auto">Sparkling</span>
+{% elif wine.wine_type == 'White'%}
+    <span class="badge rounded-pill bg-light text-dark p-2 d-flex align-items-center ml-auto">White</span>
+{% elif wine.wine_type == 'Fortified'%}
+    <span class="badge rounded-pill bg-dark text-light p-2 d-flex align-items-center ml-auto">Fortified</span>
+{% elif wine.wine_type == 'Rose'%}
+    <span class="badge rounded-pill text-light p-2 d-flex align-items-center ml-auto" style="background: pink">Rose</span>
+{% endif %}

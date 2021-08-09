@@ -1,0 +1,46 @@
+{% load static %}
+{% comment %} <aside class="sidebar-dark-primary elevation-4 " style="position:relative">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" 
+                data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item">
+                    <a href="{% url 'wine:search:index' %}" class="nav-link">
+                        <i class="nav-icon fas fa-search"></i> 와인 검색</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'wine:country:index' %}"  class="nav-link">
+                        <i class="nav-icon fas fa-map-marker-alt"></i> 생산 지역 별 와인</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'wiki:index' %}"  class="nav-link">
+                        <i class="nav-icon fas fa-book-open"></i> 와인 관련 지식</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'wine:news:index' %}"  class="nav-link">
+                        <i class="nav-icon fas fa-newspaper"></i> 와인 / 주류 관련 기사</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside> {% endcomment %}
+
+    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-dark min-vh-sm-100">
+        <a href="{% url 'wine:pairing:index' %}" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <span class="fs-5 d-sm-inline">음식</span>
+        </a>
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+            <li class="nav-item">
+                <a href="{% url 'wine:pairing:index' %}" class="nav-link align-middle px-0">
+                    <i class="nav-icon fas fa-wine-glass-alt"></i> 음식별 어울리는 와인</a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{% url 'wine:pairing:cook' %}" class="nav-link align-middle px-0">
+                    <i class="nav-icon fas fa-utensils"></i> 와인으로 만드는 요리</a>
+            </li>
+        </ul>
+    </div>
