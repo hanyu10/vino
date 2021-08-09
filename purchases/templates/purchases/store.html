@@ -56,7 +56,7 @@
         {% for page_number in shop_list.paginator.page_range %}
             {% if page_number == shop_list.number %}
             <li class="page-item active" aria-current="page">
-                {% if wine_query %}
+                {% if shop_query %}
                     <a class="page-link" href="?page={{ page_number }}&{{ shop_query }}">{{ page_number }}</a>
                 {% else %}
                     <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
