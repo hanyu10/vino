@@ -1,94 +1,28 @@
 {% extends 'base.html' %}
 
-{% block content-header %}
-    <h1 class="text-center alert alert-secondary">Pairing food</h1>
-{% endblock  %}
-
 {% load static %}
 
+{% block content-header %}
+<h1 class="text-center alert alert-secondary">Pairing food</h1>
+{% endblock  %}
+
 {% block content-wrapper %}
-
-<div class="card">
-    <div class="card-body">
-
-    <div class="row">
-
-    <div class="col-sm-3">
-        <div class="card" style="width:400px">
-            <img class="card-img-top-fluid" src="{% static 'images/beef2.jpg' %}" alt="Card image">
+<div class="row my-5">
+    {% for english, korean in food.items %}
+    <div class="col-lg-3 col-md-6 my-3">
+        <div class="card">
+            <img class="card-img-top"
+                src="{% static 'images/food/'|add:english|add:'.png' %}"
+                alt="{{ korean }}">
             <div class="card-img-overlay">
-                <a href="{% url 'wine:pairing:beef' %}" class="card-title text-black font-weight-bold btn btn-light">소고기와 어울리는 와인 </a>
-            </div>
-            </div>
-    </div>
-
-    <div class="col-sm-3">
-        <div class="card" style="width:400px">
-            <img class="card-img-top-fluid" src="{% static 'images/chiken2.jpg' %}" alt="Card image">
-            <div class="card-img-overlay">
-                <a href="{% url 'wine:pairing:chiken' %}" class="card-title text-black font-weight-bold btn btn-light">닭고기와 어울리는 와인</a>
-            </div>
-            </div>
-    </div>
-
-    <div class="col-sm-3">
-        <div class="card" style="width:400px">
-            <img class="card-img-top-fluid" src="{% static 'images/cheese2.jpg' %}" alt="Card image" >
-            <div class="card-img-overlay">
-                <a href="{% url 'wine:pairing:cheese' %}" class="card-title text-black font-weight-bold btn btn-light">치즈와 어울리는 와인 </a>
-            </div>
-            </div>
-    </div>
-
-    <div class="col-sm-3">
-        <div class="card" style="width:400px">
-            <img class="card-img-top-fluid" src="{% static 'images/fish3.jpg' %}" alt="Card image">
-            <div class="card-img-overlay">
-                <a href="{% url 'wine:pairing:fish' %}" class="card-title text-black font-weight-bold btn btn-light">생선요리와 어울리는 와인</a>
+                {% comment %} <a href="{% url 'wine:pairing:'|add:english %}" {% endcomment %}
+                <a href="{% url 'wine:pairing:list'%}?food={{ english }}"
+                    class="card-title font-weight-bold btn btn-light">
+                    {{ korean }}와 어울리는 와인
+                </a>
             </div>
         </div>
     </div>
-
-
-    <div class="col-sm-3">
-        <div class="card" style="width:400px">
-            <img class="card-img-top" src="{% static 'images/lamb2.jpg' %}" alt="Card image">
-            <div class="card-img-overlay">
-        
-                <a href="{% url 'wine:pairing:lamb' %}" class="card-title-fluid text-black font-weight-bold btn btn-light">양고기와 어울리는 와인</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-sm-3">
-        <div class="card" style="width:400px">
-            <img class="card-img-top" src="{% static 'images/pasta2.jpg' %}" alt="Card image">
-            <div class="card-img-overlay">
-               
-                <a href="{% url 'wine:pairing:pasta' %}" class="card-title text-black font-weight-bold btn btn-light">파스타와 어울리는 와인</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-sm-3">
-        <div class="card" style="width:400px">
-            <img class="card-img-top" src="{% static 'images/pork2.jpg' %}">
-            <div class="card-img-overlay">
-                
-                <a href="{% url 'wine:pairing:pork' %}" class="card-title text-black font-weight-bold btn btn-light">돼지고기와 어울리는 와인</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-sm-3">
-        <div class="card" style="width:400px">
-            <img class="card-img-top" src="{% static 'images/dessert2.jpg' %}">
-            <div class="card-img-overlay">
-                
-                <a href="{% url 'wine:pairing:dessert' %}" class="card-title text-black font-weight-bold btn btn-light">달콤한 디저트와 어울리는 와인</a>
-            </div>
-        </div>
-    </div>
-
-
+    {% endfor %}
+</div>
 {% endblock content-wrapper %}
