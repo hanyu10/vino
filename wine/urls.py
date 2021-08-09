@@ -12,4 +12,10 @@ urlpatterns = [
     path('detail/<int:pk>/', WineDetailView.as_view(), name='detail'),
     path('pairing/', include('pairing.urls')),
     path('news/', include('news.urls')),
+    path('purchases/', include('purchases.urls')),
+   
+   
+
+
+
 ]

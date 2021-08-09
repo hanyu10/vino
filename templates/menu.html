@@ -17,13 +17,13 @@
           <a href="{% url 'wine:country:index' %}" class="nav-link"><i class="fas fa-globe-europe"></i> 지역 별 와인</a>
         </li>
         <li class="nav-item text-center">
-          <a href="{% url 'wine:pairing:index' %}" class="nav-link"><i class="fas fa-utensils"></i> 요리</a>
+          <a href="{% url 'wine:pairing:main' %}" class="nav-link"><i class="fas fa-utensils"></i> 음식</a>
         </li>
         <li class="nav-item text-center">
           <a href="{% url 'review:index' %}" class="nav-link"><i class="fas fa-clipboard-list"></i> 리뷰</a>
         </li>
         <li class="nav-item text-center">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><i class="fas fa-shopping-cart"></i> 구매 (준비 중)</a>
+          <a href="{% url 'purchases:store' %}" class="nav-link"><i class="fas fa-shopping-cart"></i> 구매 (준비 중)</a>
         </li>
       </ul>
       <ul class="navbar-nav">

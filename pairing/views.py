@@ -2,9 +2,16 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 
 # Create your views here.
+class PairingMainView(TemplateView):
+    template_name= 'pairing/pairing_main.html'
+
+
 class PairingView(TemplateView):
     template_name= 'pairing/pairing.html'
 
+
+class PairingView_cook(TemplateView):
+    template_name= 'pairing/winerecipe.html'
 
 
 class PairingView_beef(TemplateView):
