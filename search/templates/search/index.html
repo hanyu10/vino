@@ -12,7 +12,7 @@
 {% endblock style %}
 
 {% block content-header %}
-  <h1 class="text-center mb-3">와인 검색</h1>
+<h1 class="text-center mb-3">와인 검색</h1>
 {% endblock content-header %}
 
 {% block content %}
@@ -49,9 +49,9 @@
     </div>
     {% endif %}
 
-    <!-- 페이징처리 시작 -->
+    <!-- 페이지네이션 -->
     <ul class="pagination justify-content-center my-4">
-        <!-- 이전페이지 -->
+        <!-- 이전 이지 -->
         {% if wine_list.has_previous %}
         <li class="page-item">
             {% if wine_query %}
@@ -65,7 +65,7 @@
             <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
         </li>
         {% endif %}
-        <!-- 페이지리스트 -->
+        <!-- 페이지 리스트 -->
         {% for page_number in wine_list.paginator.page_range %}
             {% if page_number == wine_list.number %}
             <li class="page-item active" aria-current="page">
@@ -85,7 +85,7 @@
             </li>
             {% endif %}
         {% endfor %}
-        <!-- 다음페이지 -->
+        <!-- 다음 페이지 -->
         {% if wine_list.has_next %}
         <li class="page-item">
             {% if wine_query %}
@@ -100,33 +100,18 @@
         </li>
         {% endif %}
     </ul>
-    <!-- 페이징처리 끝 -->
-
-    {% comment %} {% if wine_list.has_previous %}
-        {% if wine_query %}
-            <a href="?page={{wine_list.number|add:-1}}&{{wine_query}}">Previous</a>
-        {% else %}
-            <a href="?page={{wine_list.number|add:-1}}">Previous</a>
-        {% endif %}
-    {% endif %}
-    Page {{wine_list.number}} of {{wine_list.paginator.num_pages}}
-    {% if wine_list.has_next %}
-        {% if wine_query %}
-            <a href="?page={{wine_list.number|add:+1}}&{{wine_query}}">Next</a>
-        {% else %}
-            <a href="?page={{wine_list.number|add:+1}}">Next</a>
-        {% endif %}
-    {% endif %} {% endcomment %}
 </div>
 {% endblock content %}
 
-{% comment %} 이렇게 하나씩 구현할 수도 있는듯 (https://docs.djangoproject.com/en/3.2/topics/forms/)
-{% for field in form %}
-    <div class="fieldWrapper">
-        {{ field.errors }}
-        {{ field.label_tag }} {{ field }}
-        {% if field.help_text %}
-        <p class="help">{{ field.help_text|safe }}</p>
-        {% endif %}
-    </div>
-{% endfor %} {% endcomment %}
+{% comment %}
+    이렇게 반복문으로 필드를 하나씩 구현할 수 있는듯 (https://docs.djangoproject.com/en/3.2/topics/forms/)
+    {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+            {% if field.help_text %}
+            <p class="help">{{ field.help_text|safe }}</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endcomment %}

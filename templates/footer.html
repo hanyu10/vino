@@ -1,60 +1,30 @@
-<footer class="bg-secondary text-white">
-    <div class="container p-4">
-        <div class="row">
-            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                <h5 class="text-uppercase">VINO</h5>
+{% load static %}
 
-                <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-                molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae
-                aliquam voluptatem veniam, est atque cumque eum delectus sint!
-                </p>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Links</h5>
-
-                <ul class="list-unstyled mb-0">
-                <li>
-                    <a href="#!" class="text-white">Link 1</a>
-                </li>
-                <li>
-                    <a href="#!" class="text-white">Link 2</a>
-                </li>
-                <li>
-                    <a href="#!" class="text-white">Link 3</a>
-                </li>
-                <li>
-                    <a href="#!" class="text-white">Link 4</a>
-                </li>
-                </ul>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Links</h5>
-
-                <ul class="list-unstyled mb-0">
-                <li>
-                    <a href="#!" class="text-white">Link 1</a>
-                </li>
-                <li>
-                    <a href="#!" class="text-white">Link 2</a>
-                </li>
-                <li>
-                    <a href="#!" class="text-white">Link 3</a>
-                </li>
-                <li>
-                    <a href="#!" class="text-white">Link 4</a>
-                </li>
-                </ul>
-            </div>
+<footer style="background: #222; color: #777; font-size: .75rem;">
+  <div class="container py-3">
+    <div class="row justify-content-center">
+      <div class="mb-4 mb-md-0 text-center">
+        <img src='{% static 'images/logo/logo.png' %}' />
+        <div class="d-flex justify-content-around mb-3">
+          <a href="#" class="text-secondary">채용안내</a>
+          <a href="#" class="text-secondary">이용약관</a>
+          <a href="#" class="text-secondary">개인정보처리방침</a>
+          <a href="#" class="text-secondary">오시는 길</a>
         </div>
+        <p class="text-secondary">
+          팀 : 3조<br>
+          주소 : 서울특별시 강남구 언주로 508 14층(역삼동, 서울상록빌딩)<br>
+          사업자등록번호 : 111-22-33333<br>
+          통신판매신고번호 : 제2021-서울강남-00001호
+        </p>
+      </div>
     </div>
+  </div>
 
-<!-- Copyright -->
-<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
     <strong>
-       Copyright &copy; 2021 <a href="http://127.0.0.1:8000" class="text-dark">VINO</a>. 
+      Copyright &copy; 2021 <a href="{% url 'home' %}" class="text-info">VINO</a>. 
     </strong> 
     All rights reserved.
-</div>
-<!-- Copyright -->
+  </div>
 </footer>

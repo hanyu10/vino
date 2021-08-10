@@ -5,26 +5,26 @@
 
 {% block style %}
 <style>
-#login_form {
-  background-image: url("{% static 'images/register_background.png' %}");
-  background-size: cover;
-  min-height: 700px
-}
+  #login_form {
+    background-image: url("{% static 'images/registration/background.png' %}");
+    background-size: cover;
+    min-height: 700px
+  }
 </style>
 {% endblock style %}
 
 {% block content-header %}
-  <h1 class="text-center mb-4"><i class="fas fa-sign-in-alt"></i> 로그인</h1>
+<h1 class="text-center mb-4"><i class="fas fa-sign-in-alt"></i> 로그인</h1>
 {% endblock content-header %}
 
 {% block content-wrapper %}
-  <div class="row text-light" id="login_form">
-    <form action="." method="post" class="form col-sm-6 col-lg-5 col-xl-4 mx-auto mt-5">
-      {% csrf_token %}
-      {% bootstrap_form form %}
-        <button type="submit" class="btn btn-primary">
-          <i class="fas fa-sign-in-alt"></i> 로그인
-        </button>
-    </form>
-  </div>
+<div class="row text-light" id="login_form">
+  <form action="." method="post" class="form col-sm-6 col-lg-5 col-xl-4 mx-auto mt-5">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+      <button type="submit" class="btn btn-primary">
+        <i class="fas fa-sign-in-alt"></i> 로그인
+      </button>
+  </form>
+</div>
 {% endblock content-wrapper %}
