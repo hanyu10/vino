@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content-header %}
+    <h1 class="text-center alert alert-secondary">Pairing food</h1>
+{% endblock  %}
+
+{% block content-wrapper %}
+
+<div class="m-5 row justify-content-around">
+    <div class="col-lg-5 py-3">
+        <div class="card">
+            <img class="card-img-top mx-auto rounded"
+                src="{% static 'images/country/Europe.png' %}"
+                alt="유럽의 와인">
+            <div class="card-body">
+                <div class="mx-auto text-center">
+                    <h2 class="card-title font-weight-bold p-3">유럽의 와인</h2>
+                    <a href="{% url 'wine:country:index' %}" class="btn btn-outline-dark">바로가기 </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+{% endblock content-wrapper %}

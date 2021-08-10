@@ -1,49 +1,53 @@
-{% extends 'base.html' %}
+{% extends 'base_wine4.html' %}
+
 {% load static %}
+
+{% block style %}
+<style>
+  a:hover {
+    text-decoration: none;
+  }
+      
+  h3 {
+    margin-top: 3rem;
+  }
+
+  h4 {
+    margin-top: 2rem;
+  }
+
+  .jumbotron {
+    background-color: gray;
+    color: white;
+    background-size: cover;
+    border-radius: 10px;
+    text : bold;
+  }
+</style>
+{% endblock style %}
+
 {% block content-header %}
-    <h1 class="text-center">지역별 와인</h1>
-{% endblock  %}
+  <h1 class="text-center">지역별 와인</h1>
+{% endblock content-header %}
 
-{% block content-wrapper %}
-<div class='row'>
-    <div class="col-md-2">
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">지역별 와인</h3>
-        </div>
-        <ul class="list-group">
-            <li class="list-group-item"><a href="{% url 'wine:country:france' %}">프랑스</a></li>
-            <li class="list-group-item"><a href="{% url 'wine:country:italy' %}">이탈리아</a></li>
-            <li class="list-group-item"><a href="{% url 'wine:country:spain' %}">스페인</a></li>
-            <li class="list-group-item"><a href="{% url 'wine:country:portugal' %}">포르투칼</a></li>
-        </ul>
-    </div>
-    </div>
-        <style>
-        .jumbotron {
-            background-image: url("{% static 'images/spain2.jpg' %}");
-            color: white;
-            background-size: cover;
-            border-radius: 10px;
-        }
-    </style>
-
-    <div class="container">
-        <div class="jumbotron py-3 mt-0">
-            <h1>스페인의 와인</h1>
-            <h2>와인의 최고 안주인 하몽의 원산지이죠</h2>
-        </div>
-
+{% block content %}
+<div class="container">
+  <div class="jumbotron py-3 mt-0">
+    <h1>스페인의 와인</h1>
+  </div>
+  <p style="margin-top:45px;">
+    <table class="table table-hover table-border">
+    <tbody>
 <div class="row mt-3">
-    <div class="col-md-4" 'text-primary'>
-        <img src="{% static 'images/spain-grape.jpg' %}" 'width=200 height=420' class="float-left" alt="Cinque Terre" >
+    <div class="col-md-6" 'text-primary'>
+        <img src="{% static 'images/spain-grape.jpg' %}" 'width=auto height=420' class="float-left" alt="Cinque Terre" >
     </div>
-    <div class="col-md-8">
-    <h6>
+    <div class="col-md-6 ">
+    <h7>
     스페인은 포도 재배 면적이 115만 ha로 세계 최대이고 와인 생산량은 34억 리터로 세계 3위인 비중이 높은 와인 생산국입니다. 넓은 포도 경작지에 비해 관개시설이 빈약하고 날씨가 건조하여 생산성은 좋지 않은 편입니다. 스페인 와인 중에서 국내에 가장 잘 알려진 와인이 주정강화 와인인 셰리와인(Sherry Wine)이 있습니다. 그러나 셰리와인은 스페인 와인 생산량의 3~6% 정도로 로제와인과 페네데스 지방의 카바(Cava)라는 스파클링 와인의 비중이 높습니다.
     스페인에는 200종에 이르는 포도 품종이 있으며 레드 와인 포도 품종으로 템프라닐로(Tempranillo), 가르나차 틴타(Garnacha Tinta), 그라시아노(Graciano), 모나스뜨렐(Monastrell) 등이 있다. 화이트 와인용으로는 아이렌(Airen), 비우라(Viura), 말바시아(Malvasia), 가르나초 블랑코(Garnacho Blanco) 등이 있습니다.
     스페인의 유명 와인인 셰리와인(Sherry Wine)은 스페인의 남부지역인 헤레스 데 라 프론테라(Jerez de la Frontera) 지역의 유명와인입니다. 헤레스 지역은 백악질 토양과 훌륭한 기후조건으로 와인이 발달하였고 이웃에 카디스항이 있어 수출이 유리했습니다. 긴 시간 항해에 와인이 변질되지 않도록 브랜디를 첨가한 데서 스페인의 주정강화 와인이 유래하였습니다. 대부분의 셰리 와인은 청포도 품종인 팔로미노(Palomino)로 제조되는 화이트 와인으로 은은한 황금빛이며 헤레스 지역의 건조한 기후로 인하여 솔레라(Solera)라는 독특한 시스템으로 숙성됩니다.
-    </h6>
+    </h7>
     </div>
 </div>
 
@@ -295,4 +299,4 @@ Tinazzi, Primitivo<button type="button" class="btn btn-danger">Red</button>
 </tbody>
 </table>
 
-{% endblock content-wrapper %}
+{% endblock %}
