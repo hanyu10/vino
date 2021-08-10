@@ -14,7 +14,7 @@
             {{ post.rating }}점
         </div>
         <div class="pb-4">
-            <a href="{% url 'review:index' %}?wine={{ post.wine.id }}"
+            <a href="{% url 'wine:detail' post.wine.id %}"
                 class="text-success">{{ post.wine.name }}</a>
             <span class="float-right">
                 <a href="{% url 'review:index'%}?owner={{ post.owner.id }}">{{ post.owner }}</a>

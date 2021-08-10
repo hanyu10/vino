@@ -12,7 +12,8 @@ class WineDetailView(DetailView):
         average_rating = 0
         for review in review_list:
             average_rating += review.rating
-        average_rating /= len(review_list)
+        if review_list:
+            average_rating /= len(review_list)
         self.extra_context = {
             'review_list': review_list,
             'average_rating': average_rating,
