@@ -3,28 +3,23 @@
 {% load static %}
 
 {% block content-header %}
-  <h1 class="text-center pb-4">와인 상세 정보</h1>
+<h1 class="text-center pb-4">와인 상세 정보</h1>
 {% endblock content-header %}
 
 {% block content %}
-{% comment %} <div class="d-flex flex-column flex-grow-1">
-</div> {% endcomment %}
-
-
-
 <div class="container-fluid">
   <div class="d-flex">
     <img src="{% static 'images/'|add:wine.area.area|add:'/'|add:wine.name|add:'.png' %}" style="width:180px; height:300px"/>
     <div class="px-3 d-flex flex-column flex-grow-1">
-      <h5 class="p-3 d-flex border-bottom border-secondary">{{wine.name}}</h5>
+      <h5 class="p-3 d-flex border-bottom border-secondary">{{ wine.name }}</h5>
       {% include 'common/wine_type_tag.html' %}
       <div class="d-inline-flex flex-column">
         <ul>
-          <li>어울리는 음식 : {{wine.food}}</li>
-          <li>당도 : {{wine.sugar}}</li>
-          <li>신도 : {{wine.sour}}</li>
-          <li>지역 : {{wine.area}}</li>
-          <li>평점 : {{average_rating}}</li>
+          <li>어울리는 음식 : {{ wine.food }}</li>
+          <li>당도 : {{ wine.sugar }}</li>
+          <li>신도 : {{ wine.sour }}</li>
+          <li>지역 : {{ wine.area }}</li>
+          <li>평점 : {{ average_rating }}</li>
         </ul>
       </div>
     </div>
@@ -42,6 +37,8 @@
       {% else %}
         <div class="text-center">작성된 리뷰가 없습니다.</div>
       {% endif %}
+      <a href="{% url 'review:add' %}?wine={{ wine.id }}"
+        class="btn btn-outline-dark my-4 float-right">리뷰 작성</a>
   </div>
 </div>
 {% endblock content %}
