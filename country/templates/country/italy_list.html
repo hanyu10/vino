@@ -1,49 +1,51 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content-header %}
-    <h1 class="text-center">지역별 와인</h1>
-{% endblock  %}
+{% extends 'base_wine4.html' %}
 
-{% block content-wrapper %}
-<div class='row'>
-    <div class="col-md-2">
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">지역별 와인</h3>
-        </div>
-        <ul class="list-group">
-            <li class="list-group-item"><a href="{% url 'wine:country:france' %}">프랑스</a></li>
-            <li class="list-group-item"><a href="{% url 'wine:country:italy' %}">이탈리아</a></li>
-            <li class="list-group-item"><a href="{% url 'wine:country:spain' %}">스페인</a></li>
-            <li class="list-group-item"><a href="{% url 'wine:country:portugal' %}">포르투칼</a></li>
-        </ul>
-    </div>
-    </div>
-        <style>
+{% load static %}
+
+{% block style %}
+    <style>
+        a:hover {text-decoration: none;}
+            
+        h3 {margin-top: 3rem;}
+
+        h4 {margin-top: 2rem;}
+
         .jumbotron {
-            background-image: url("{% static 'images/italy2.jpg' %}");
-            color: white;
-            background-size: cover;
-            border-radius: 10px;
+        background-color: gray;
+        color: white;
+        background-size: cover;
+        border-radius: 10px;
+        text : bold;
         }
     </style>
+{% endblock style %}
 
-    <div class="container">
-        <div class="jumbotron py-3 mt-0">
-            <h1>이탈리아의 와인</h1>
-            <h2>모든 술의 안주는 피자!!, 그럼 피자의 원산지는?!!</h2>
-        </div>
+{% block content-header %}
+  <h1 class="text-center">지역별 와인</h1>
+{% endblock content-header %}
 
-<div class="row mt-3">
-    <div class="col-md-4" 'text-primary'>
-        <img src="{% static 'images\wine3.jpg' %}" 'width=200 height=420' class="float-left" alt="Cinque Terre" >
+{% block content %}
+<div class="container">
+    <div class="jumbotron py-3 mt-0">
+        <h1>이탈리아의 와인</h1>
     </div>
-    <div class="col-md-8">
-    <h5>
-        이탈리아는 와인의 종주국으로 3000년의 와인 역사를 가지고 있고 1963년 제정된 법률에 의해 D.O.C.G->D.O.C->IGT->VDT로 등급이 분류됩니. 와인산지로는 토스카나와 피에몬테 지역이 가장 유명합니다.
-     </br></br>   이탈리아의 와인 산지로 가장 유명한 곳은 피렌체를 중심으로 한 중서부의 토스카나 지방과 북서부 알프스 산맥 아래의 피에몬테 지방 두 곳입니다. 그 외에 시칠리아, 베네토, 롬바르디아, 캄파니아, 아브루죠, 마르게 지방 등이 유명합니다.
-
-    </h5>
+        <p style="margin-top:45px;">
+            <table class="table table-hover table-border">
+            <tbody>
+            <div class="row mt-3">
+                <div class="col-md-6" 'text-primary'>
+                    <img src="{% static 'images/wine1.jpg' %}" 'width=200px height=420' class="float-left" alt="Cinque Terre" >
+                </div>
+            <div class="row mt-3">
+                <div class="col-md-6" 'text-primary'>
+                    <img src="{% static 'images\wine3.jpg' %}" 'width=200 height=420' class="float-left" alt="Cinque Terre" >
+                </div>
+            <div class="col-md-6">
+            <h5>
+                이탈리아는 와인의 종주국으로 3000년의 와인 역사를 가지고 있고 1963년 제정된 법률에 의해 D.O.C.G->D.O.C->IGT->VDT로 등급이 분류됩니. 와인산지로는 토스카나와 피에몬테 지역이 가장 유명합니다.
+            </br></br>   이탈리아의 와인 산지로 가장 유명한 곳은 피렌체를 중심으로 한 중서부의 토스카나 지방과 북서부 알프스 산맥 아래의 피에몬테 지방 두 곳입니다. 그 외에 시칠리아, 베네토, 롬바르디아, 캄파니아, 아브루죠, 마르게 지방 등이 유명합니다.
+            </h5>
+        </div>   
     </div>
 </div>
 
@@ -234,4 +236,4 @@ Tinazzi, Primitivo<button type="button" class="btn btn-danger">Red</button>
 </tbody>
 </table>
 
-{% endblock content-wrapper %}
+{% endblock %}

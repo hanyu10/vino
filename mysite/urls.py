@@ -26,4 +26,5 @@ urlpatterns = [
     path('wiki/', include('wiki.urls')),
     path('review/', include('review.urls')),
     path('purchases/', include('purchases.urls')),
+    path('test1/', include('test1.urls')),
 ]

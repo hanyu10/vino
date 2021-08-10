@@ -1,48 +1,48 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content-header %}
-    <h1 class="text-center">지역별 와인</h1>
-{% endblock  %}
+{% extends 'base_wine4.html' %}
 
-{% block content-wrapper %}
-<div class='row'>
-    <div class="col-md-2">
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">지역별 와인</h3>
-        </div>
-        <ul class="list-group">
-            <li class="list-group-item"><a href="{% url 'wine:country:france' %}">프랑스</a></li>
-            <li class="list-group-item"><a href="{% url 'wine:country:italy' %}">이탈리아</a></li>
-            <li class="list-group-item"><a href="{% url 'wine:country:spain' %}">스페인</a></li>
-            <li class="list-group-item"><a href="{% url 'wine:country:portugal' %}">포르투칼</a></li>
-        </ul>
-    </div>
-    </div>
-        <style>
+{% load static %}
+
+{% block style %}
+    <style>
+        a:hover {text-decoration: none;}
+            
+        h3 {margin-top: 3rem;}
+
+        h4 {margin-top: 2rem;}
+
         .jumbotron {
-            background-image: url("{% static 'images/portugal2.jpg' %}");
-            color: white;
-            background-size: cover;
-            border-radius: 10px;
+        background-color: gray;
+        color: white;
+        background-size: cover;
+        border-radius: 10px;
+        text : bold;
         }
     </style>
+{% endblock style %}
 
-    <div class="container">
-        <div class="jumbotron py-3 mt-0">
-            <h1>포르투칼의 와인</h1>
-            <h2>리스본의 자연의 풍경을 눈으로만 보지말고 마셔보세요</h2>
-        </div>
+{% block content-header %}
+  <h1 class="text-center">지역별 와인</h1>
+{% endblock content-header %}
 
-<div class="row mt-3">
-    <div class="col-md-4" 'text-primary'>
-        <img src="{% static 'images\wine4.jpg' %}" 'width=200 height=420' class="float-left" alt="Cinque Terre" >
+{% block content %}
+<div class="container">
+    <div class="jumbotron py-3 mt-0">
+        <h1>포트투칼의 와인</h1>
     </div>
-    <div class="col-md-8">
-    <h5>
-    포르투갈에서 생산되는 와인. 대표적인 와인으로 주정강화 와인인 포트 와인(Port Wine), 식전 와인으로 유명한 마데이라(Madeira)가 있으며 마테우스 로제와인, 비뉴 베르데 등 독특한 와인도 생산된다.</br></br>
-    포르투갈의 대표적인 주정강화 와인인 포트 와인(Port Wine)은 포르투갈 북부 도루강(Douro R.) 상류의 알토도루 지역에서 재배된 적포도와 청포도로 주로 만들어진다. 
-    </h5>
+        <p style="margin-top:45px;">
+            <table class="table table-hover table-border">
+            <tbody>
+    <div class="row mt-3">
+        <div class="col-md-6" 'text-primary'>
+            <img src="{% static 'images\wine4.jpg' %}" 'width=200 height=420' class="float-left" alt="Cinque Terre" >
+        </div>
+        
+        <div class="col-md-6">
+            <h5>
+            포르투갈에서 생산되는 와인. 대표적인 와인으로 주정강화 와인인 포트 와인(Port Wine), 식전 와인으로 유명한 마데이라(Madeira)가 있으며 마테우스 로제와인, 비뉴 베르데 등 독특한 와인도 생산된다.</br></br>
+            포르투갈의 대표적인 주정강화 와인인 포트 와인(Port Wine)은 포르투갈 북부 도루강(Douro R.) 상류의 알토도루 지역에서 재배된 적포도와 청포도로 주로 만들어진다. 
+            </h5>
+        </div>
     </div>
 </div>
 
@@ -240,9 +240,9 @@ Burmester, White Port<button type="button" class="btn btn-primary">Whitee</butto
 </h6>
 </td>
 </tr>
-
+</div>
 </div>
 </tbody>
 </table>
 
-{% endblock content-wrapper %}
+{% endblock  %}

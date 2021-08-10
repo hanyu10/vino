@@ -1,53 +1,50 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content-header %}
-    <h1 class="text-center">지역별 와인</h1>
-{% endblock  %}
+{% extends 'base_wine4.html' %}
 
-{% block content-wrapper %}
-<div class='row'>
-    <div class="col-md-2">
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">지역별 와인</h3>
-        </div>
-        <ul class="list-group">
-            <li class="list-group-item"><a href="{% url 'wine:country:france' %}">프랑스</a></li>
-            <li class="list-group-item"><a href="{% url 'wine:country:italy' %}">이탈리아</a></li>
-            <li class="list-group-item"><a href="{% url 'wine:country:spain' %}">스페인</a></li>
-            <li class="list-group-item"><a href="{% url 'wine:country:portugal' %}">포르투칼</a></li>
-        </ul>
-    </div>
-    </div>
-    <div class="col-md-10">
-        <style>
+{% load static %}
+
+{% block style %}
+    <style>
+        a:hover {text-decoration: none;}
+            
+        h3 {margin-top: 3rem;}
+
+        h4 {margin-top: 2rem;}
+
         .jumbotron {
-            background-image: url(https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F016%2F2014%2F12%2F24%2F20141224000561_1_99_20141224142503.jpg&type=sc960_832);
-            color: white;
-            background-size: cover;
-            border-radius: 10px;
+        background-color: gray;
+        color: white;
+        background-size: cover;
+        border-radius: 10px;
+        text : bold;
         }
     </style>
+{% endblock style %}
 
-    <div class="container">
-        <div class="jumbotron py-3 mt-0">
-            <h1>프랑스의 와인</h1>
-            <h2>프랑스 보르도의 와인은 1등급 와인들의 생산지입니다.</h2>
-        </div>
+{% block content-header %}
+  <h1 class="text-center">지역별 와인</h1>
+{% endblock content-header %}
 
-<div class="row mt-3">
-    <div class="col-md-4" 'text-primary'>
-        <img src="{% static 'images/wine1.jpg' %}" 'width=200px height=420' class="float-left" alt="Cinque Terre" >
+{% block content %}
+<div class="container">
+    <div class="jumbotron py-3 mt-0">
+        <h1>프랑스의 와인</h1>
     </div>
-    <div class="col-md-8">
-    <h5>
-    프랑스에서 생산되는 와인. 프랑스는 농산물 중에서 와인이 차지하는 비율이 10%이며 전체 와인 중 레드와인이 약 60% 비율로 생산됩니다.</br>
-    프랑스에서 재배되고 있는 포도 품종은 130종이며, 비교적 넓은 면적에서 재배되고 있는 대표적인 화이트 와인 품종으로 워니 블랑, 샤르도네, 소비뇽 블랑, 세미용, 뮈스카데, 슈냉 블랑, 리슬링이 있고, 레드와인 품종으로는 카리냥, 그르나슈 누아르, 메를로, 카베르네 소비뇽, 시라, 가메, 생소, 피노 누아 등이 있습니다.
-    프랑스는 이처럼 포도 재배에 훌륭한 자연환경과 더불어 포도 질병 퇴치 노력, 다양한 포도품종의 개발, 블랜딩 기술의 향상, 새로운 와인 제조기술의 개발, 철저한 등급 관리의 노력으로 와인 재배 면적으로는 스페인과 이탈리아에 비해 작지만 최고의 품질을 자랑하는 세계 최고의 와인 강국으로 자리 잡게 되었습니다.
-    </h5>
+        <p style="margin-top:45px;">
+            <table class="table table-hover table-border">
+            <tbody>
+            <div class="row mt-3">
+                <div class="col-md-6" 'text-primary'>
+                    <img src="{% static 'images/wine1.jpg' %}" 'width=200px height=420' class="float-left" alt="Cinque Terre" >
+                </div>
+                <div class="col-md-6">
+                <h5>
+                프랑스에서 생산되는 와인. 프랑스는 농산물 중에서 와인이 차지하는 비율이 10%이며 전체 와인 중 레드와인이 약 60% 비율로 생산됩니다.</br>
+                프랑스에서 재배되고 있는 포도 품종은 130종이며, 비교적 넓은 면적에서 재배되고 있는 대표적인 화이트 와인 품종으로 워니 블랑, 샤르도네, 소비뇽 블랑, 세미용, 뮈스카데, 슈냉 블랑, 리슬링이 있고, 레드와인 품종으로는 카리냥, 그르나슈 누아르, 메를로, 카베르네 소비뇽, 시라, 가메, 생소, 피노 누아 등이 있습니다.
+                프랑스는 이처럼 포도 재배에 훌륭한 자연환경과 더불어 포도 질병 퇴치 노력, 다양한 포도품종의 개발, 블랜딩 기술의 향상, 새로운 와인 제조기술의 개발, 철저한 등급 관리의 노력으로 와인 재배 면적으로는 스페인과 이탈리아에 비해 작지만 최고의 품질을 자랑하는 세계 최고의 와인 강국으로 자리 잡게 되었습니다.
+                </h5>
+        </div>  
     </div>
 </div>
-
 
 <p style="margin-top:45px;">
 
@@ -250,4 +247,4 @@ Thomas Kim Desruets Brut<button type="button" class="btn btn-warning">Sparkling<
 </tbody>
 </table>
 
-{% endblock content-wrapper %}
+{% endblock %}

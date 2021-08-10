@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content-header %}
+ <h1>Bookmark List</h1>
+{% endblock %}
+{% block content %}
+<div>
+ <h1>Bookmark List</h1>
+ <ul>
+ {% for wine in object_list %}
+ <li>
+ <a href="{% url 'wine:detail' wine.id %}">{{wine}}</a>
+ </li>
+ {% endfor %}
+ </ul>
+</div>
+{% endblock %}
