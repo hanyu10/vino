@@ -1,0 +1,4 @@
+ul.list1, ul.list2, ul.list3 {
+  list-style: none;
+  padding-inline-start: 0;
+}
