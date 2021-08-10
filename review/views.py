@@ -1,4 +1,3 @@
-from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from review.models import Post
 from wine.models import Wine
@@ -61,4 +60,3 @@ class PostDeleteView(OwnerOnlyMixin, DeleteView) :
   
   def get(self, *args, **kwargs):
     return self.post(*args, **kwargs)
-
