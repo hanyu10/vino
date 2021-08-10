@@ -1,15 +1,49 @@
 {% load static %}
 
 <footer style="background: #222; color: #777; font-size: .75rem;">
-  <div class="container py-3">
+  <div class="container pb-2">
     <div class="row justify-content-center">
-      <div class="mb-4 mb-md-0 text-center">
+      <div class="mb-md-0 text-center">
         <img src='{% static 'images/logo/logo.png' %}' />
         <div class="d-flex justify-content-around mb-3">
-          <a href="#" class="text-secondary">채용안내</a>
-          <a href="#" class="text-secondary">이용약관</a>
-          <a href="#" class="text-secondary">개인정보처리방침</a>
-          <a href="#" class="text-secondary">오시는 길</a>
+          <span type="button" data-bs-toggle="modal" data-bs-target="#termsModal">
+            이용약관
+          </span>
+          <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="termsModalLabel">이용약관</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  {% include 'footer/terms.html' %}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span type="button" data-bs-toggle="modal" data-bs-target="#privacyModal">
+            개인정보처리방침
+          </span>
+          <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="privacyModalLabel">개인정보처리방침</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  {% include 'footer/privacy_policy.html' %}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <p class="text-secondary">
           팀 : 3조<br>
