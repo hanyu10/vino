@@ -11,7 +11,9 @@ country_list = {
     'portugal': '포르투칼',
     'france' : '프랑스',
     'spain' : '스페인',
-    'italy' : '이탈리아',    
+    'italy' : '이탈리아',
+    'germany' : '독일',
+    'austria' : '오스트리아'    
 }
 
 class CountryMainView(TemplateView):
