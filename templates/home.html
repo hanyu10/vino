@@ -1,59 +1,175 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content-header %}
-    <h1 class="text-center">VINO</h1>
+<h1 class="text-center">VINO</h1>
 {% endblock  %}
 
 {% block content-wrapper %}
-    <div class="col-sm-8 mx-auto py-5">
-        <form action="{% url 'wine:search:index' %}" class="input-group rounded">
-            <input type="text" class="form-control rounded" placeholder="와인 검색" name="name"/>
-            <button class="input-group-text border-0" id="search-addon">
-                <i class="fas fa-search"></i>
-            </button>
-        </form>
-    </div>
+<div class="col-sm-8 mx-auto py-5">
+    <form action="{% url 'wine:search:index' %}" class="input-group rounded">
+        <input type="text" class="form-control rounded" placeholder="와인 검색" name="name"/>
+        <button class="input-group-text border-0" id="search-addon">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+</div>
 
+<div class='container'>
+    <hr class="one">
+    <h3 class='text-center'>와인 추천</h3>
     <div class="row justify-content-center my-5">
+    {% for wine in wine_top5 %}
         <div class="card" style="width:200px">
-            <img class="card-img-top" src="https://img.freepik.com/free-photo/red-wine_144627-33208.jpg?size=626&ext=jpg&ga=GA1.2.1320595435.1627868186" alt="Card image">
+            <img class="card-img-top"
+                src="{% static 'images/'|add:wine.area|add:'/'|add:wine.name|add:'.png' %}"
+                alt="{{ wine.name }}}}">
             <div class="card-body">
-                <h4 class="card-title">John Doe</h4>
-                <p class="card-text">Some example text.</p>
-                <a href="#" class="btn btn-primary">See Profile</a>
+                <h4 class="card-title">{{ wine.name }}</h4>
+                <p class="card-text">{{ wine.rating__avg }}점</p>
+                <a href="{% url 'wine:detail' wine.wine_id %}" class="btn btn-outline-primary">와인 상세정보</a>
             </div>
         </div>
-        <div class="card" style="width:200px">
-            <img class="card-img-top" src="https://img.freepik.com/free-vector/premium-quality-red-white-and-pink-wine-labels-set-on-the-realistic-bottles_167715-856.jpg?size=338&ext=jpg&ga=GA1.2.1320595435.1627868186" alt="Card image">
-            <div class="card-body">
-                <h4 class="card-title">John Doe</h4>
-                <p class="card-text">Some example text.</p>
-                <a href="#" class="btn btn-primary">See Profile</a>
-            </div>
-        </div>
-        <div class="card" style="width:200px">
-            <img class="card-img-top" src="https://img.freepik.com/free-photo/red-wine_144627-33208.jpg?size=626&ext=jpg&ga=GA1.2.1320595435.1627868186" alt="Card image">
-            <div class="card-body">
-                <h4 class="card-title">John Doe</h4>
-                <p class="card-text">Some example text.</p>
-                <a href="#" class="btn btn-primary">See Profile</a>
-            </div>
-        </div>
-        <div class="card" style="width:200px">
-            <img class="card-img-top" src="https://img.freepik.com/free-vector/premium-quality-red-white-and-pink-wine-labels-set-on-the-realistic-bottles_167715-856.jpg?size=338&ext=jpg&ga=GA1.2.1320595435.1627868186" alt="Card image">
-            <div class="card-body">
-                <h4 class="card-title">John Doe</h4>
-                <p class="card-text">Some example text.</p>
-                <a href="#" class="btn btn-primary">See Profile</a>
-            </div>
-        </div>
-        <div class="card" style="width:200px">
-            <img class="card-img-top" src="https://img.freepik.com/free-photo/red-wine_144627-33208.jpg?size=626&ext=jpg&ga=GA1.2.1320595435.1627868186" alt="Card image">
-            <div class="card-body">
-                <h4 class="card-title">John Doe</h4>
-                <p class="card-text">Some example text.</p>
-                <a href="#" class="btn btn-primary">See Profile</a>
-            </div>
-        </div>
+    {% endfor %}
     </div>
+</div>
+<br><br><br>
+
+
+<div class='container'>
+    <hr class="one">
+    <h3 class='text-center'>이벤트</h3>
+    <div class="row justify-content-center my-5">
+
+        <div class="card" style="width:200px; margin:10px">
+            <img class="card-img-top" src="https://wine21.speedgabia.com/EVENT_MST/TITLE/0018000/0018041.jpg"
+                alt="Card image">
+            <div class="card-body">
+                <span class="badge badge-danger">시음회</span>
+                <h5 class="card-title">Brand Day - Vina Cobos</h5>
+                <br>
+                <p class="card-text">WSA와인아카데미</p>
+                <p class="card-text">2021.08.26</p>
+                <a href="https://wsaacademy.com/goods/view?no=3682&utm_source=wine21&utm_medium=cpa&utm_campagin=-&utm_content=wine21_210826" 
+                class="btn btn-light" target="_blank">상세보기</a>
+            </div>
+        </div>
+
+        <div class="card" style="width:200px; margin:10px">
+            <img class="card-img-top" src="https://wine21.speedgabia.com/EVENT_MST/TITLE/0018000/0018037.jpg"
+                alt="Card image">
+            <div class="card-body">
+                <span class="badge badge-danger">시음회</span>
+                <h5 class="card-title">Brand Day - Villa Maria</h5>
+                <br>
+                <p class="card-text">WSA와인아카데미</p>
+                <p class="card-text">2021.08.13</p>
+                <a href="https://wsaacademy.com/goods/view?no=3674&utm_source=wine21&utm_medium=cpa&utm_campagin=-&utm_content=wine21_210813" 
+                class="btn btn-light" target="_blank">상세보기</a>
+            </div>
+        </div>
+        
+        <div class="card" style="width:200px; margin:10px">
+            <img class="card-img-top" src="https://wine21.speedgabia.com/EVENT_MST/TITLE/0018000/0018032.jpg"
+                alt="Card image">
+            <div class="card-body">
+                <span class="badge badge-danger">교육</span>
+                <h5 class="card-title">'SWS 스페인 와인 전문가 과정' 개강</h5>
+                <br>
+                <p class="card-text">WSA와인아카데미</p>
+                <p class="card-text">2021.08.23~09.27</p>
+                <a href="https://wsaacademy.com/goods/view?no=3618&utm_source=wine21&utm_medium=cpa&utm_campagin=-&utm_content=wine21_210823" 
+                class="btn btn-light" target="_blank">상세보기</a>
+            </div>
+        </div>
+
+        <div class="card" style="width:200px; margin:10px">
+            <img class="card-img-top" src="https://wine21.speedgabia.com/EVENT_MST/TITLE/0018000/0018049.jpg"
+                alt="Card image">
+            <div class="card-body">
+                <span class="badge badge-danger">교육</span>
+                <h5 class="card-title">Natural Wine Master Class 개강</h5>
+                <p class="card-text">WSA와인아카데미</p>
+                <p class="card-text">2021.08.27 ~ 09.10</p>
+                <a href="https://www.wsaacademy.com/goods/view?no=3684&utm_source=wine21&utm_medium=cpa&utm_campagin=-&utm_content=wine21_210827" 
+                class="btn btn-light" target="_blank">상세보기</a>
+            </div>
+        </div>
+
+        <div class="card" style="width:200px; margin:10px">
+            <img class="card-img-top" src="https://wine21.speedgabia.com/EVENT_MST/TITLE/0018000/0018036.jpg"
+                alt="Card image">
+            <div class="card-body">
+                <span class="badge badge-danger">교육</span>
+                <h5 class="card-title">WSET Level 1 입문 과정 (평일저녁 주1회)</h5>
+                <p class="card-text">WSA와인아카데미</p>
+                <p class="card-text">2021.08.06~08.13</p>
+                <a href="https://wsaacademy.com/goods/view?no=3669&utm_source=wine21&utm_medium=cpa&utm_campagin=-&utm_content=wine21_210806" 
+                class="btn btn-light" target="_blank">상세보기</a>
+            </div>
+        </div>
+                                
+    </div>
+</div>
+<br><br><br>
+
+<div class='container'>
+    <hr class="one">
+    <h3 class='text-center'>오프라인 구매처 추천</h3>
+    <p class='text-right'><a href="{% url 'purchases:store' %}"><i class="fas fa-align-justify"></i>더보기</a></p>      
+    <div class="row justify-content-center my-5">
+
+        <div class="card" style="width:200px; height:250px; margin:10px">                
+            <div class="card-body">
+                <h5 class="card-title">부띠끄 와인샵</h5>                    
+                <p class="card-text"><span class="badge badge-danger">서울 강남구</span></p>
+                <p>서울 강남구 도산대로 322</p>                    
+                <a href=http://127.0.0.1:8000/purchases/purchases/1/ 
+                class="btn btn-light">상세보기</a>
+            </div>
+        </div>
+        
+        <div class="card" style="width:200px; height:250px; margin:10px">                
+            <div class="card-body">
+                <h5 class="card-title">와인픽스 성수점</h5>
+                <p class="card-text"><span class="badge badge-danger">서울 성동구</span></p>
+                <p>서울 성동구 상원1길 21</p>                    
+                <a href="http://127.0.0.1:8000/purchases/purchases/2/" 
+                class="btn btn-light">상세보기</a>
+            </div>
+        </div>
+        
+        <div class="card" style="width:200px; height:250px; margin:10px">                
+            <div class="card-body">
+                <h5 class="card-title">비노 아미쿠스</h5>
+                <p class="card-text"><span class="badge badge-danger">서울 강남구</span></p>
+                <p>서울 강남구 양재천로 191</p>                    
+                <a href="http://127.0.0.1:8000/purchases/purchases/3/" 
+                class="btn btn-light">상세보기</a>
+            </div>
+        </div>
+        
+        <div class="card" style="width:200px; height:250px; margin:10px">                
+            <div class="card-body">
+                <h5 class="card-title">와인픽스 부산점</h5>
+                <p class="card-text"><span class="badge badge-danger">서울 해운대구</span></p>
+                <p>서울 해운대구 구남로 9</p>                    
+                <a href="http://127.0.0.1:8000/purchases/purchases/4/" 
+                class="btn btn-light">상세보기</a>
+            </div>
+        </div>
+
+        <div class="card" style="width:200px; height:250px; margin:10px">                
+            <div class="card-body">
+                <h5 class="card-title">분당 와인하우스</h5>
+                <p class="card-text"><span class="badge badge-danger">경기 성남시 분당구</span></p>
+                <p>경기 성남시 분당구 황새울로 258번길 36</p>                    
+                <a href="http://127.0.0.1:8000/purchases/purchases/5/" 
+                class="btn btn-light">상세보기</a>
+            </div>
+        </div>
+
+    </div>
+</div>
 {% endblock  %}

@@ -49,57 +49,8 @@
     </div>
     {% endif %}
 
-    <!-- 페이지네이션 -->
-    <ul class="pagination justify-content-center my-4">
-        <!-- 이전 이지 -->
-        {% if wine_list.has_previous %}
-        <li class="page-item">
-            {% if wine_query %}
-                <a class="page-link" href="?page={{ wine_list.previous_page_number }}&{{ wine_query }}">이전</a>
-            {% else %}
-                <a class="page-link" href="?page={{ wine_list.previous_page_number }}">이전</a>
-            {% endif %}
-        </li>
-        {% else %}
-        <li class="page-item disabled">
-            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
-        </li>
-        {% endif %}
-        <!-- 페이지 리스트 -->
-        {% for page_number in wine_list.paginator.page_range %}
-            {% if page_number == wine_list.number %}
-            <li class="page-item active" aria-current="page">
-                {% if wine_query %}
-                    <a class="page-link" href="?page={{ page_number }}&{{ wine_query }}">{{ page_number }}</a>
-                {% else %}
-                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-                {% endif %}
-            </li>
-            {% else %}
-            <li class="page-item">
-                {% if wine_query %}
-                    <a class="page-link" href="?page={{ page_number }}&{{ wine_query }}">{{ page_number }}</a>
-                {% else %}
-                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-                {% endif %}
-            </li>
-            {% endif %}
-        {% endfor %}
-        <!-- 다음 페이지 -->
-        {% if wine_list.has_next %}
-        <li class="page-item">
-            {% if wine_query %}
-                <a class="page-link" href="?page={{ wine_list.next_page_number }}&{{ wine_query }}">다음</a>
-            {% else %}
-                <a class="page-link" href="?page={{ wine_list.next_page_number }}">다음</a>
-            {% endif %}
-        </li>
-        {% else %}
-        <li class="page-item disabled">
-            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
-        </li>
-        {% endif %}
-    </ul>
+    {% comment %} 페이지네이션 {% endcomment %}
+    {% include 'common/pagination.html' with page_obj=wine_list query=wine_query %}
 </div>
 {% endblock content %}
 
