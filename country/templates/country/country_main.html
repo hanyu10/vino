@@ -12,12 +12,26 @@
     <div class="col-lg-5 py-3">
         <div class="card">
             <img class="card-img-top mx-auto rounded"
-                src="{% static 'images/country/Europe.png' %}"
-                alt="유럽의 와인">
+                src="{% static 'images/country/europe.png' %}"
+                alt="유럽의 와인(구세계 와인)">
             <div class="card-body">
                 <div class="mx-auto text-center">
                     <h2 class="card-title font-weight-bold p-3">유럽의 와인</h2>
                     <a href="{% url 'wine:country:index' %}" class="btn btn-outline-dark">바로가기 </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="col-lg-5 py-3">
+        <div class="card">
+            <img class="card-img-top mx-auto rounded"
+                src="{% static 'images/country/usa.png' %}"
+                alt="신세계 와인">
+            <div class="card-body">
+                <div class="mx-auto text-center">
+                    <h2 class="card-title font-weight-bold p-3">미주의 와인</h2>
+                    <a href="{% url 'wine:country:index2' %}" class="btn btn-outline-dark">바로가기</a>
                 </div>
             </div>
         </div>

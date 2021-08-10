@@ -16,12 +16,20 @@ country_list = {
     'austria' : '오스트리아'    
 }
 
+country_list_america = {
+    'australia': '호주',
+    'america': '미국',
+    'chile': '칠레',
+    'argentina': '아르헨티나',    
+}
+
 class CountryMainView(TemplateView):
     template_name = 'country/country_main.html'
 
 class CountryView(TemplateView):
     template_name = 'country/country.html'
     extra_context = { 'area': country_list }
+
 
 class CountryListView(ListView):
     template_name = 'country/country_list.html'
@@ -33,6 +41,22 @@ class CountryListView(ListView):
         food_kor = country_list.get(country)
         self.extra_context = { 'area': food_kor }
         return super().get(request, *args, **kwargs)
+
+class CountryView_america(TemplateView):
+    template_name = 'country/country_america.html'
+    extra_context = { 'area': country_list_america }
+
+class CountryListView_america(ListView):
+    template_name = 'country/country_list_america.html'
+    context_object_name = 'wine_list'
+
+    def get(self, request, *args, **kwargs):
+        country = request.GET.get('area')
+        self.queryset = Wine.objects.all().filter(area__area=country)
+        food_kor = country_list_america.get(country)
+        self.extra_context = { 'area': food_kor }
+        return super().get(request, *args, **kwargs)
+
 
 # class globalView(TemplateView):
 #     template_name = 'country/area.html'
