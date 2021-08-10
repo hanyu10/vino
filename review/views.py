@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from review.models import Post
 from wine.models import Wine
@@ -39,7 +38,13 @@ class PostCreateView(LoginRequiredMixin, CreateView):
   model = Post
   fields = ['wine', 'title', 'content', 'rating']
   success_url = reverse_lazy('review:index')
-  
+
+  def get(self, request, *args, **kwargs):
+    self.wine_id = request.GET.get('wine')
+    if self.wine_id:
+      self.initial = { 'wine': Wine.objects.get(pk=self.wine_id) }
+    return super().get(request, *args, **kwargs)
+
   def form_valid(self, form):
     form.instance.owner = self.request.user
     return super().form_valid(form)
@@ -55,4 +60,3 @@ class PostDeleteView(OwnerOnlyMixin, DeleteView) :
   
   def get(self, *args, **kwargs):
     return self.post(*args, **kwargs)
-
