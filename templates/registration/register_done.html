@@ -4,25 +4,25 @@
 
 {% block style %}
 <style>
-#register_done {
-  background-image: url("{% static 'images/register_background.png' %}");
-  background-size: cover;
-  min-height: 700px
-}
+  #register_done {
+    background-image: url("{% static 'images/registration/background.png' %}");
+    background-size: cover;
+    min-height: 700px
+  }
 </style>
 {% endblock style %}
 
 {% block content-header %}
-  <h1 class="text-center mb-4"><i class="fas fa-check-square"></i> 회원 가입 완료</h1>
+<h1 class="text-center mb-4"><i class="fas fa-check-square"></i> 회원 가입 완료</h1>
 {% endblock content-header %}
 
 {% block content-wrapper %}
-  <div class="row" id="register_done">
-    <div class="col-sm-6 mx-auto my-3">
-      <h2 class="text-light my-3">회원 가입을 축하합니다.</h2>
-      <button class="font-italic btn btn-primary text-light">
-        <a href="{% url 'login' %}" class="text-light">로그인</a>
-      </button>
-    </div>
+<div class="row" id="register_done">
+  <div class="col-sm-6 mx-auto my-3">
+    <h2 class="text-light my-3">회원 가입을 축하합니다.</h2>
+    <button class="font-italic btn btn-primary text-light">
+      <a href="{% url 'login' %}" class="text-light">로그인</a>
+    </button>
   </div>
+</div>
 {% endblock content-wrapper %}
