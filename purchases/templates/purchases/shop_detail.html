@@ -3,20 +3,84 @@
 {% load static %}
 
 {% block content-header %}
-  <h1 class="text-center">오프라인 상점 상세 정보</h1>
+  <h1 class="text-center">오프라인 상점 상세 정보</h1><br> 
 {% endblock content-header %}
 
 {% block content %}
 
 <div class="container">
-  <h3>{{ shop.name }}</h3>
+  <h3><i class="nav-icon fas fa-store"></i> {{ shop.name }}</h3>
   <div class="d-inline-flex flex-column">
       <ul class="list-group list-group-horizontal mt-5 ml-3">
-          <li class="list-group-item">{{ shop.name }}</li>
-          <li class="list-group-item">{{ shop.area }}</li>
-          <li class="list-group-item">{{ shop.address }}</li>
+          <li class="list-group-item">상점 : {{ shop.name }}</li>
+          <li class="list-group-item"> 지역 : {{ shop.area }}</li>
+          
       </ul>
   </div>
+
+
+<br><br><br>
+
+
+
+  <h5 style= text-align:center> 
+      <i class="nav-icon fas fa-map-marker-alt"></i> <strong>지도 정보 보기 : {{ shop.address }} </strong></h5>
+          
+      <br>
+
+
+
+{% comment %} 여기부터 카카오맵 API {% endcomment %}
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=125c50379d3e5ced602ff7b485a104f7&libraries=services"></script>
+   
+  <div id="map" style="width:800px; height:500px;" class="col-sm-6 mx-auto"></div>
+
+  <script>
+    var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+    var mapContainer = document.getElementById('map');
+    var mapOption = {
+      center: new kakao.maps.LatLng(33.450701, 126.570667),
+      level: 3
+    };
+
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+    var ps = new kakao.maps.services.Places();
+
+    ps.keywordSearch("{{ shop.name }}", placesSearchCB); 
+
+    function placesSearchCB (data, status, pagination) {
+      if (status === kakao.maps.services.Status.OK) {
+        var bounds = new kakao.maps.LatLngBounds();
+
+        for (var i=0; i<data.length; i++) {
+            displayMarker(data[i]);    
+            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+        }
+        map.setBounds(bounds);
+      } 
+    }
+
+    function displayMarker(place) {
+      var marker = new kakao.maps.Marker({
+        map: map,
+        position: new kakao.maps.LatLng(place.y, place.x) 
+      });
+
+      kakao.maps.event.addListener(marker, 'click', function() {
+
+        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+        infowindow.open(map, marker);
+      });
+    }
+  </script>
+  {% comment %} 여기까지 카카오맵 API {% endcomment %}
+
+
 </div>
+
+
+
+
+
 
 {% endblock content %}
