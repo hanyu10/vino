@@ -8,7 +8,7 @@
 
 {% block content-wrapper %}
 <div class="row my-5">
-    {% for english, korean in country.items %}
+    {% for english, korean in area.items %}
     <div class="col-lg-3 col-md-6 my-3">
         <div class="card">
             <img class="card-img-top"
@@ -16,7 +16,7 @@
                 alt="{{ korean }}">
             <div class="card-img-overlay">
                 {% comment %} <a href="{% url 'wine:pairing:'|add:english %}" {% endcomment %}
-                <a href="{% url 'wine:country:list'%}?country={{ english }}"
+                <a href="{% url 'wine:country:list'%}?area={{ english }}"
                     class="card-title font-weight-bold btn btn-light">
                     {{ korean }}의 와인
             </div>
