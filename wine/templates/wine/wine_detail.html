@@ -3,26 +3,45 @@
 {% load static %}
 
 {% block content-header %}
-  <h1 class="text-center">와인 상세 정보</h1>
+  <h1 class="text-center pb-4">와인 상세 정보</h1>
 {% endblock content-header %}
 
 {% block content %}
-<div class="container">
-  <h3>{{ wine.name }}</h3>
-  
-  <img src="{% static 'images/'|add:wine.area.area|add:'/'|add:wine.name|add:'.png' %}" style="width:120px; height:220px"/>
-  <div class="d-inline-flex flex-column">
-      <ul class="list-group list-group-horizontal mt-5 ml-3">
-          <li class="list-group-item">{{wine.wine_type}}</li>
-          <li class="list-group-item">{{wine.food}}</li>
-          <li class="list-group-item">{{wine.sugar}}</li>
-          <li class="list-group-item">{{wine.sour}}</li>
-          <li class="list-group-item">{{wine.area}}</li>
-      </ul>
+{% comment %} <div class="d-flex flex-column flex-grow-1">
+</div> {% endcomment %}
+
+
+
+<div class="container-fluid">
+  <div class="d-flex">
+    <img src="{% static 'images/'|add:wine.area.area|add:'/'|add:wine.name|add:'.png' %}" style="width:180px; height:300px"/>
+    <div class="px-3 d-flex flex-column flex-grow-1">
+      <h5 class="p-3 d-flex border-bottom border-secondary">{{wine.name}}</h5>
+      {% include 'common/wine_type_tag.html' %}
+      <div class="d-inline-flex flex-column">
+        <ul>
+          <li>어울리는 음식 : {{wine.food}}</li>
+          <li>당도 : {{wine.sugar}}</li>
+          <li>신도 : {{wine.sour}}</li>
+          <li>지역 : {{wine.area}}</li>
+          <li>평점 : {{average_rating}}</li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <p>와인 설명</p>
-  <div>
-    리뷰
+  <div class="my-5">
+    <p>와인 설명</p>
+  </div>
+  <div class="my-5">
+    <h3 class="text-center py-3 border-top border-dark">
+      <i class="fas fa-clipboard-list"></i> 리뷰</h3>
+      {% if review_list %}
+        {% for review in review_list %}
+          {% include './small_review.html'%}
+        {% endfor %}
+      {% else %}
+        <div class="text-center">작성된 리뷰가 없습니다.</div>
+      {% endif %}
   </div>
 </div>
 {% endblock content %}

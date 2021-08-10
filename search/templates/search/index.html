@@ -3,77 +3,120 @@
 {% load bootstrap4 %}
 {% load static %}
 
+{% block style %}
+<style>
+    a:hover {
+        text-decoration: none;
+    }
+</style>
+{% endblock style %}
+
 {% block content-header %}
-  <h1 class="text-center">와인 검색</h1>
+  <h1 class="text-center mb-3">와인 검색</h1>
 {% endblock content-header %}
 
 {% block content %}
-<div class="row">
-    {% comment %} <div class="col-sm-3 border">
-        <ul>
-            <li><a href="{% url 'wine:search:index' %}">와인 검색</a></li>
-            <li><a href="{% url 'wiki:index' %}">와인 관련 지식</a></li>
-        </ul>
-    </div> {% endcomment %}
-    <div class="col-md-3">
-    <!-- 사이드 바 메뉴-->
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">와인 정보</h3>
-            </div>
-            <ul class="list-group">
-                <li class="list-group-item"><a href="{% url 'wine:search:index' %}">와인 검색</a></li>
-                <li class="list-group-item"><a href="{% url 'wiki:index' %}">와인 관련 지식</a></li>
-            </ul>
+<div class="py-3">
+    <form action="{% url 'wine:search:index' %}" class="rounded border p-3">
+        {% bootstrap_form form %}
+        <div class="text-right">
+            <button type="reset" class="btn btn-outline-warning btn-md" >
+                <i class="fas fa-undo-alt"></i> 초기화
+            </button>
+            <button type="submit" class="btn btn-primary btn-md" >
+                <i class="fas fa-search"></i> 검색
+            </button>
         </div>
-    </div>
-
-    <div class="col-sm-9 py-5">
-        {% comment %} <form action="." method="post" class="input-group rounded"> {% endcomment %}
-        <form action="." method="post" class="rounded border p-3">
-            {% csrf_token %}
-            {% comment %} {% bootstrap_form form %} {% endcomment %}
-            {{ form.as_p }}
-            {% comment %} <input  type="search" 
-                    class="form-control rounded"   
-                    placeholder="Search Wine" /> {% endcomment %}
-            <button type="submit" class="btn btn-primary btn-sm" >
-                <i class="fas fa-search"></i>
-            </button>
-            <button type="reset" class="btn btn-primary btn-sm" >
-                <i class="fas fa-undo-alt"></i>
-            </button>
-        </form>
-        {% if wine_list %}
-            <h2 class="mt-4">와인 리스트</h2>
-            {% for wine in wine_list %}
-                <a href="{% url 'wine:detail' wine.id %}" class="text-dark d-flex py-4 border-bottom">
-                    <img src="{% static 'images/'|add:wine.area.area|add:'/'|add:wine.name|add:'.png' %}" style="width:120px; height:220px"/>
-                    <div class="d-flex flex-column">
-                        <span><h3>{{wine.name}}</h3></span>
-                        <ul class="list-group list-group-horizontal mt-5 ml-3">
-                            <li class="list-group-item">{{wine.wine_type}}</li>
-                            <li class="list-group-item">{{wine.food}}</li>
-                            <li class="list-group-item">{{wine.sugar}}</li>
-                            <li class="list-group-item">{{wine.sour}}</li>
-                            <li class="list-group-item">{{wine.area}}</li>
-                        </ul>
-                        
+    </form>
+    {% if wine_list %}
+    <div class="mt-5">
+        <h2 class="row justify-content-center bg-dark text-light rounded p-3 mt-5">검색 결과</h2>
+        {% for wine in wine_list %}
+            <div class="py-4 border-bottom">
+                <a href="{% url 'wine:detail' wine.id %}" class="d-flex">
+                    <img src="{% static 'images/'|add:wine.area.area|add:'/'|add:wine.name|add:'.png' %}" style="width:180px; height:300px"/>
+                    <div class="text-dark px-3 d-flex flex-column flex-grow-1">
+                        <h5 class="mb-3 d-flex">
+                            <span class="mr-auto">{{wine.name}}</span>
+                            {% include 'common/wine_type_tag.html' %}
+                        </h5>
+                        <p>지역 : {{wine.area}}</p>
+                        <p>어울리는 요리 : {{wine.food}}</p>
                     </div>
                 </a>
-            {% endfor %}
-
-        {% endif %}
-        {% if wine_list.has_previous %}
-            <a href="?page={{wine_list.number|add:-1}}&{{wine_query}}">Previous</a>
-        {% endif %}
-        Page {{wine_list.number}} of {{wine_list.paginator.num_pages}}
-        {% if wine_list.has_next %}
-            <a href="?page={{wine_list.number|add:+1}}&{{wine_query}}">Next</a>
-        {% endif %}
-
-
+            </div>
+        {% endfor %}
     </div>
+    {% endif %}
+
+    <!-- 페이징처리 시작 -->
+    <ul class="pagination justify-content-center my-4">
+        <!-- 이전페이지 -->
+        {% if wine_list.has_previous %}
+        <li class="page-item">
+            {% if wine_query %}
+                <a class="page-link" href="?page={{ wine_list.previous_page_number }}&{{ wine_query }}">이전</a>
+            {% else %}
+                <a class="page-link" href="?page={{ wine_list.previous_page_number }}">이전</a>
+            {% endif %}
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+        </li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in wine_list.paginator.page_range %}
+            {% if page_number == wine_list.number %}
+            <li class="page-item active" aria-current="page">
+                {% if wine_query %}
+                    <a class="page-link" href="?page={{ page_number }}&{{ wine_query }}">{{ page_number }}</a>
+                {% else %}
+                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                {% endif %}
+            </li>
+            {% else %}
+            <li class="page-item">
+                {% if wine_query %}
+                    <a class="page-link" href="?page={{ page_number }}&{{ wine_query }}">{{ page_number }}</a>
+                {% else %}
+                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                {% endif %}
+            </li>
+            {% endif %}
+        {% endfor %}
+        <!-- 다음페이지 -->
+        {% if wine_list.has_next %}
+        <li class="page-item">
+            {% if wine_query %}
+                <a class="page-link" href="?page={{ wine_list.next_page_number }}&{{ wine_query }}">다음</a>
+            {% else %}
+                <a class="page-link" href="?page={{ wine_list.next_page_number }}">다음</a>
+            {% endif %}
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+        </li>
+        {% endif %}
+    </ul>
+    <!-- 페이징처리 끝 -->
+
+    {% comment %} {% if wine_list.has_previous %}
+        {% if wine_query %}
+            <a href="?page={{wine_list.number|add:-1}}&{{wine_query}}">Previous</a>
+        {% else %}
+            <a href="?page={{wine_list.number|add:-1}}">Previous</a>
+        {% endif %}
+    {% endif %}
+    Page {{wine_list.number}} of {{wine_list.paginator.num_pages}}
+    {% if wine_list.has_next %}
+        {% if wine_query %}
+            <a href="?page={{wine_list.number|add:+1}}&{{wine_query}}">Next</a>
+        {% else %}
+            <a href="?page={{wine_list.number|add:+1}}">Next</a>
+        {% endif %}
+    {% endif %} {% endcomment %}
 </div>
 {% endblock content %}
 

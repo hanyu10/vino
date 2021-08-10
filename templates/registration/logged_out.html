@@ -1,14 +1,28 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block style %}
+<style>
+#logout_form {
+  background-image: url("{% static 'images/register_background.png' %}");
+  background-size: cover;
+  min-height: 700px
+}
+</style>
+{% endblock style %}
+
 {% block content-header %}
-  <h1>로그아웃</h1>
+  <h1 class="text-center mb-4"><i class="fas fa-sign-out-alt"></i> 로그아웃</h1>
 {% endblock content-header %}
 
-{% block content %}
-  <div class="my-5 ml-5">
-    <p>로그아웃 되었습니다.</p>
+{% block content-wrapper %}
+  <div class="row" id="logout_form">
+    <div class="col-sm-6 mx-auto text-light">
+      <h2 class="mt-5 text-center">로그아웃 되었습니다.</h2>
+    </div>
   </div>
   <p class="font-italic">
     <a href="{% url 'login' %}">다시 로그인 하기</a>
   </p>
-{% endblock content %}
+{% endblock content-wrapper %}

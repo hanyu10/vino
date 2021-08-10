@@ -1,17 +1,26 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from wine.models import Wine
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Post(models.Model):
-    title = models.CharField(verbose_name='TITLE', max_length=50)
-    description = models.CharField('DESCRIPTION', max_length=100,
-        blank=True, help_text='simple description text.')
-    content = models.TextField('CONTENT')
+    title = models.CharField(verbose_name='제목', max_length=50)
+    content = models.TextField('내용')
     create_dt = models.DateTimeField('CREATE DATE', auto_now_add=True)
     modify_dt = models.DateTimeField('MODIFY DATE', auto_now=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='OWNER', blank=True, null=True)
-    
- 
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, 
+            verbose_name='Owner', null=True)
+    wine = models.ForeignKey(Wine, on_delete=models.CASCADE, 
+            verbose_name='와인', null=True)
+    rating = models.IntegerField(
+                validators=[
+                    MaxValueValidator(5),
+                    MinValueValidator(1)
+                ],
+                default=5
+            )
+
     class Meta:
         verbose_name = 'post'
         verbose_name_plural = 'posts'

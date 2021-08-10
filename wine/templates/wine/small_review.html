@@ -1,0 +1,9 @@
+<div class="p-3 border">
+  <span class="float-right">
+    {{ review.rating }}점 /
+    <a href="?owner={{ review.owner.id }}">{{ review.owner }}</a>
+    / {{ review.modify_dt|date:"Y-m-d" }}
+  </span>
+  <h5>{{ review.title }}</h5>
+  <p>{{ review.content|slice:50 }}</p>
+</div>

@@ -1,40 +1,136 @@
 {% extends 'base.html' %}
 
+{% block style %}
+<style>
+    h4 a{
+        color: black;
+        text-decoration: none;
+    }
+    h4 a:hover {
+        color: gray;
+    }
+
+    .dropdown-toggle, .dropdown-menu {
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        height:200px;
+        overflow-y: scroll;
+    }
+
+    #review_list div {
+        border-top: 1px solid lightgray;
+    }
+
+    #review_list div:first-child {
+        border-top: 0px none;
+    }
+</style>
+{% endblock style %}
+
 {% block content-header %}
-<div class="col-sm-8 mx-auto py-5">
-    <h1><i class="fas fa-list"></i> review 목록</h1>
+<div class="col-sm-8 mx-auto py-2">
+    <h2 class="text-center"><i class="fas fa-comments"></i> 와인 리뷰</h2>
 </div>
 {% endblock %}
 
-{% block content%}
-<div class="col-sm-8 mx-auto py-5">
-    {%for post in posts%}
-    <h3><a href="{{post.get_absolute_url}}">{{post.title}}</a></h3>
-    {{post.modify_dt|date:"Y-m-d"}}
-    <p>{{post.description}}</p>
-    {% endfor %}
-
-    <div>
-        <span>
-            {% if page_obj.has_previous %}
-            <a href="?page={{page_obj.previous_page_number}}">Prev</a>
+{% block content-wrapper %}
+<div class="col-sm-8 mx-auto" style="min-height: 500px">
+    {% comment %} 와인 선택 {% endcomment %}
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false">
+            {% if selected_wine %} {{ selected_wine }}
+            {% else %} 전체 보기
             {% endif %}
-
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages}}
-            {% if page_obj.has_next %}
-            <a href="?page={{page_obj.next_page_number}}">Next</a>
-            {% endif %}
-
-        </span>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {% for wine in reviewd_wines %}
+                <a class="dropdown-item" href="?wine={{ wine.id }}">{{ wine.name }}</a>
+            {% endfor %}
+        </div>
     </div>
-
+    {% comment %} 리뷰 리스트 {% endcomment %}
+    <div class="p-3 border" id="review_list">
+        {% autoescape off %}
+        {% for post in posts %}
+            <div class="py-2">
+                <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+                <p>
+                    <a href="{% url 'review:index' %}?wine={{ post.wine.id }}" class="text-success">{{ post.wine.name }}</a>
+                    <span class="float-right">
+                        <a href="?owner={{ post.owner.id }}">{{ post.owner }}</a>
+                        / {{ post.modify_dt|date:"Y-m-d" }}
+                    </span>
+                </p>
+                <p>{{ post.content|slice:50 }}</p>
+            </div>
+        {% endfor %}
+        {% endautoescape %}
+    </div>
+    <!-- 페이징처리 시작 -->
+    <ul class="pagination justify-content-center my-4">
+        <!-- 이전페이지 -->
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            {% if wine_query %}
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}&{{ wine_query }}">이전</a>
+            {% else %}
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">이전</a>
+            {% endif %}
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+        </li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in page_obj.paginator.page_range %}
+            {% if page_number == page_obj.number %}
+            <li class="page-item active" aria-current="page">
+                {% if wine_query %}
+                    <a class="page-link" href="?page={{ page_number }}&{{ wine_query }}">{{ page_number }}</a>
+                {% else %}
+                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                {% endif %}
+            </li>
+            {% else %}
+            <li class="page-item">
+                {% if wine_query %}
+                    <a class="page-link" href="?page={{ page_number }}&{{ wine_query }}">{{ page_number }}</a>
+                {% else %}
+                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                {% endif %}
+            </li>
+            {% endif %}
+        {% endfor %}
+        <!-- 다음페이지 -->
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            {% if wine_query %}
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}&{{ wine_query }}">다음</a>
+            {% else %}
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">다음</a>
+            {% endif %}
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+        </li>
+        {% endif %}
+    </ul>
+    <!-- 페이징처리 끝 -->
     {% if user.is_active %}
-    <div class="text-right mr-3">
-        <a href="{%url 'review:add' %}" class="btn btn-primary btn-sm">
-            <i class="fas fa-pencil-alt"></i> 쓰기</a>
-    </div>
+        <div class="text-right m-3">
+            <a href="{% url 'review:add' %}" class="btn btn-primary btn-sm">
+                <i class="fas fa-pencil-alt"></i> 리뷰 작성</a>
+        </div>
     {% endif %}
-
 </div>
 
 {% endblock %}

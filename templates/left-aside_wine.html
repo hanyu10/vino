@@ -1,36 +1,16 @@
-{% load static %}
-{% comment %} <aside> {% endcomment %}
-<aside class="main-sidebar sidebar-dark-primary elevation-4 " style="position:relative">
-    <!-- Brand Logo -->
-    {% comment %} <a href="{% url 'home' %}" class="brand-link">
-        <span class="brand-text font-weight-light">VINO</span>
-    </a> {% endcomment %}
-
-    <!-- Sidebar -->
-    {% comment %} <div class="sidebar" style="width:20%"> {% endcomment %}
-    <div class="sidebar">
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" 
-                data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item">
-                    <a href="{% url 'wine:search:index' %}" class="nav-link">
-                        <i class="nav-icon fas fa-search"></i> 와인 검색</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'area:index' %}"  class="nav-link">
-                        <i class="nav-icon fas fa-map-marker-alt"></i> 생산 지역 별 와인</a>
-                </li>
-                <li class="nav-item">
-                    {% comment %} <a href="{% url 'wine:wiki:index' %}"  class="nav-link"> {% endcomment %}
-                    <a href="{% url 'wiki:index' %}"  class="nav-link">
-                        <i class="nav-icon fas fa-book-open"></i> 와인 관련 지식</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#"  class="nav-link">
-                        <i class="nav-icon fas fa-newspaper"></i> 와인 / 주류 관련 기사</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</aside>
+<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-dark min-vh-sm-100">
+    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+        <li class="nav-item">
+            <a href="{% url 'wine:search:index' %}" class="nav-link align-middle px-0">
+                <i class="nav-icon fas fa-search"></i> 와인 검색</a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'wiki:index' %}"  class="nav-link align-middle px-0">
+                <i class="nav-icon fas fa-book-open"></i> 와인 관련 지식</a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'wine:news:index' %}"  class="nav-link align-middle px-0">
+                <i class="nav-icon fas fa-newspaper"></i> 와인 / 주류 관련 기사</a>
+        </li>
+    </ul>
+</div>

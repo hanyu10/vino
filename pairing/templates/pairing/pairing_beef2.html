@@ -4,7 +4,21 @@
     <h1 class="text-center">와인과 어울리는 요리</h1>
 {% endblock  %}
 
-{% block content %}
+{% block content-wrapper %}
+<div class='row'>
+    <div class="col-md-2">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">요리</h3>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item"><a href="{% url 'wine:pairing:index' %}">음식별 어울리는 와인</a></li>
+            <li class="list-group-item"><a href="#">와인으로 만드는 요리</a></li>
+            
+        </ul>
+    </div>
+    </div>
+
 
         <style>
         .jumbotron {
@@ -44,8 +58,9 @@ Calmel & Joseph, La Madone <button type="button" class="btn btn-danger">Red</but
 </h6>
 </td>
 </tr>
+</div>
 
 
 
 
-{% endblock content %}
+{% endblock content-wrapper %}
