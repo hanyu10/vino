@@ -16,19 +16,21 @@
     </form>
 </div>
 
-<div class='container'>
+<div class='container-fluid'>
     <hr class="one">
     <h3 class='text-center'>와인 추천</h3>
     <div class="row justify-content-center my-5">
     {% for wine in wine_top5 %}
-        <div class="card" style="width:200px">
+        <div class="card m-3" style="width:200px">
             <img class="card-img-top"
                 src="{% static 'images/'|add:wine.area|add:'/'|add:wine.name|add:'.png' %}"
                 alt="{{ wine.name }}}}">
-            <div class="card-body">
-                <h4 class="card-title">{{ wine.name }}</h4>
-                <p class="card-text">{{ wine.rating__avg }}점</p>
-                <a href="{% url 'wine:detail' wine.wine_id %}" class="btn btn-outline-primary">와인 상세정보</a>
+            <div class="card-body d-flex flex-column justify-content-between">
+                <h5 class="card-title">{{ wine.name }}</h5>
+                <div>
+                    <p class="card-text">{{ wine.rating__avg }}점</p>
+                    <a href="{% url 'wine:detail' wine.wine_id %}" class="btn btn-outline-dark">와인 상세정보</a>
+                </div>
             </div>
         </div>
     {% endfor %}
@@ -44,7 +46,7 @@
 
         <div class="card" style="width:200px; margin:10px">
             <img class="card-img-top" src="https://wine21.speedgabia.com/EVENT_MST/TITLE/0018000/0018041.jpg"
-                alt="Card image">
+                alt="event1">
             <div class="card-body">
                 <span class="badge badge-danger">시음회</span>
                 <h5 class="card-title">Brand Day - Vina Cobos</h5>
@@ -58,7 +60,7 @@
 
         <div class="card" style="width:200px; margin:10px">
             <img class="card-img-top" src="https://wine21.speedgabia.com/EVENT_MST/TITLE/0018000/0018037.jpg"
-                alt="Card image">
+                alt="event2">
             <div class="card-body">
                 <span class="badge badge-danger">시음회</span>
                 <h5 class="card-title">Brand Day - Villa Maria</h5>
@@ -72,7 +74,7 @@
         
         <div class="card" style="width:200px; margin:10px">
             <img class="card-img-top" src="https://wine21.speedgabia.com/EVENT_MST/TITLE/0018000/0018032.jpg"
-                alt="Card image">
+                alt="event3">
             <div class="card-body">
                 <span class="badge badge-danger">교육</span>
                 <h5 class="card-title">'SWS 스페인 와인 전문가 과정' 개강</h5>
@@ -86,7 +88,7 @@
 
         <div class="card" style="width:200px; margin:10px">
             <img class="card-img-top" src="https://wine21.speedgabia.com/EVENT_MST/TITLE/0018000/0018049.jpg"
-                alt="Card image">
+                alt="event4">
             <div class="card-body">
                 <span class="badge badge-danger">교육</span>
                 <h5 class="card-title">Natural Wine Master Class 개강</h5>
@@ -99,7 +101,7 @@
 
         <div class="card" style="width:200px; margin:10px">
             <img class="card-img-top" src="https://wine21.speedgabia.com/EVENT_MST/TITLE/0018000/0018036.jpg"
-                alt="Card image">
+                alt="event5">
             <div class="card-body">
                 <span class="badge badge-danger">교육</span>
                 <h5 class="card-title">WSET Level 1 입문 과정 (평일저녁 주1회)</h5>
@@ -117,59 +119,19 @@
 <div class='container'>
     <hr class="one">
     <h3 class='text-center'>오프라인 구매처 추천</h3>
-    <p class='text-right'><a href="{% url 'purchases:store' %}"><i class="fas fa-align-justify"></i>더보기</a></p>      
+    <p class='text-right'><a href="{% url 'purchases:store' %}" class="btn btn-outline-secondary"><i class="fas fa-align-justify"></i> 더보기</a></p>      
     <div class="row justify-content-center my-5">
-
-        <div class="card" style="width:200px; height:250px; margin:10px">                
-            <div class="card-body">
-                <h5 class="card-title">부띠끄 와인샵</h5>                    
-                <p class="card-text"><span class="badge badge-danger">서울 강남구</span></p>
-                <p>서울 강남구 도산대로 322</p>                    
-                <a href=http://127.0.0.1:8000/purchases/purchases/1/ 
-                class="btn btn-light">상세보기</a>
+        {% for shop in shop_list %}        
+            <div class="card" style="width:200px; height:250px; margin:10px">                
+                <div class="card-body">
+                    <h5 class="card-title">{{ shop.name }}</h5>                    
+                    <p class="card-text"><span class="badge badge-danger">{{shop.area}}</span></p>
+                    <p>{{ shop.address }}</p>                    
+                    <a href="{% url 'purchases:detail' shop.id %}"
+                    class="btn btn-light">상세보기</a>
+                </div>
             </div>
-        </div>
-        
-        <div class="card" style="width:200px; height:250px; margin:10px">                
-            <div class="card-body">
-                <h5 class="card-title">와인픽스 성수점</h5>
-                <p class="card-text"><span class="badge badge-danger">서울 성동구</span></p>
-                <p>서울 성동구 상원1길 21</p>                    
-                <a href="http://127.0.0.1:8000/purchases/purchases/2/" 
-                class="btn btn-light">상세보기</a>
-            </div>
-        </div>
-        
-        <div class="card" style="width:200px; height:250px; margin:10px">                
-            <div class="card-body">
-                <h5 class="card-title">비노 아미쿠스</h5>
-                <p class="card-text"><span class="badge badge-danger">서울 강남구</span></p>
-                <p>서울 강남구 양재천로 191</p>                    
-                <a href="http://127.0.0.1:8000/purchases/purchases/3/" 
-                class="btn btn-light">상세보기</a>
-            </div>
-        </div>
-        
-        <div class="card" style="width:200px; height:250px; margin:10px">                
-            <div class="card-body">
-                <h5 class="card-title">와인픽스 부산점</h5>
-                <p class="card-text"><span class="badge badge-danger">서울 해운대구</span></p>
-                <p>서울 해운대구 구남로 9</p>                    
-                <a href="http://127.0.0.1:8000/purchases/purchases/4/" 
-                class="btn btn-light">상세보기</a>
-            </div>
-        </div>
-
-        <div class="card" style="width:200px; height:250px; margin:10px">                
-            <div class="card-body">
-                <h5 class="card-title">분당 와인하우스</h5>
-                <p class="card-text"><span class="badge badge-danger">경기 성남시 분당구</span></p>
-                <p>경기 성남시 분당구 황새울로 258번길 36</p>                    
-                <a href="http://127.0.0.1:8000/purchases/purchases/5/" 
-                class="btn btn-light">상세보기</a>
-            </div>
-        </div>
-
+        {% endfor %}
     </div>
 </div>
 {% endblock  %}
