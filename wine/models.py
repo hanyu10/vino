@@ -13,6 +13,10 @@ class Wine(models.Model):
     area = models.ForeignKey(Country, on_delete=models.CASCADE)
     sugar = models.IntegerField()
     sour = models.IntegerField()
+    kind = models.CharField(max_length=50)
+    region = models.CharField(max_length=100)
+    explain = models.CharField(max_length=500)
+
 
     def __str__(self):
         return self.name
