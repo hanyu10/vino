@@ -1,9 +1,3 @@
-# from django.shortcuts import render
-# from django.views.generic import TemplateView
-# from django.views.generic import ListView, DetailView
-# from django.views.generic import FormView
-# from wine.models import Wine, Country
-
 from django.views.generic import TemplateView, ListView
 from wine.models import Wine
 
@@ -13,14 +7,14 @@ country_list = {
     'spain' : '스페인',
     'italy' : '이탈리아',
     'germany' : '독일',
-    'austria' : '오스트리아'    
+    'austria' : '오스트리아',
 }
 
 country_list_america = {
     'australia': '호주',
     'america': '미국',
     'chile': '칠레',
-    'argentina': '아르헨티나',    
+    'argentina': '아르헨티나',
 }
 
 class CountryMainView(TemplateView):
@@ -56,24 +50,3 @@ class CountryListView_america(ListView):
         country_kor = country_list_america.get(country)
         self.extra_context = { 'area': country_kor }
         return super().get(request, *args, **kwargs)
-
-
-# class globalView(TemplateView):
-#     template_name = 'country/area.html'
-
-# class FranceListView(TemplateView):
-#     template_name = 'country/france_list.html'
-
-# class SpainListView(TemplateView):
-#     template_name = 'country/spain_list.html'
-
-# class ItalyListView(TemplateView):
-#     template_name = 'country/italy_list.html'
-
-# class PortugalListView(TemplateView):
-#     template_name = 'country/portugal_list.html'
-
-
-
-
-# Create your views here.
