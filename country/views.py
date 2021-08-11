@@ -53,8 +53,8 @@ class CountryListView_america(ListView):
     def get(self, request, *args, **kwargs):
         country = request.GET.get('area')
         self.queryset = Wine.objects.all().filter(area__area=country)
-        food_kor = country_list_america.get(country)
-        self.extra_context = { 'area': food_kor }
+        country_kor = country_list_america.get(country)
+        self.extra_context = { 'area': country_kor }
         return super().get(request, *args, **kwargs)
 
 
