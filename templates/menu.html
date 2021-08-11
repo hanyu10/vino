@@ -24,7 +24,10 @@
           <a href="{% url 'review:index' %}" class="nav-link"><i class="fas fa-clipboard-list"></i> 리뷰</a>
         </li>
         <li class="nav-item text-center">
-          <a href="{% url 'purchases:store' %}" class="nav-link"><i class="fas fa-shopping-cart"></i> 구매</a>
+          <a href="{% url 'purchases:store' %}" class="nav-link"><i class="fas fa-shopping-cart"></i> 구매처</a>
+        </li>
+        <li class="nav-item text-center">
+          <a href="{% url 'chat:room' 'room' %}" class="nav-link"><i class="fas fa-comments"></i> 채팅</a>
         </li>
       </ul>
       <ul class="navbar-nav">
