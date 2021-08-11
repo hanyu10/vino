@@ -1,10 +1,10 @@
 <div class="p-3 border">
   <span class="float-right">
     {{ review.rating }}점 /
-    <a href="?owner={{ review.owner.id }}">{{ review.owner }}</a>
+    <a href="{% url 'review:index' %}?owner={{ review.owner.id }}">{{ review.owner }}</a>
     / {{ review.modify_dt|date:"Y-m-d" }}
   </span>
-  <h5>{{ review.title }}</h5>
+  <h5><a href="{% url 'review:detail' review.id %}" class="text-dark">{{ review.title }}</a></h5>
   <p>
     {% autoescape off %}
     {{ review.content|slice:50 }}
