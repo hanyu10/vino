@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.views.generic import TemplateView, ListView
 from wine.models import Wine
 
@@ -65,5 +66,15 @@ class PairingListView(ListView):
         food = request.GET.get('food')
         self.queryset = Wine.objects.all().filter(food=food)
         food_kor = food_list.get(food)
-        self.extra_context = { 'food': food_kor }
+        
+        paginator = Paginator(self.queryset, 5)
+        page = request.GET.get('page', 1)
+        self.queryset = paginator.get_page(page)
+        food_query = ''
+        if food:
+            food_query =  f'food={food}'
+        self.extra_context = {
+            'food': food_kor,
+            'food_query': food_query
+        }
         return super().get(request, *args, **kwargs)

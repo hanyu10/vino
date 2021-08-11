@@ -7,23 +7,18 @@
 {% endblock content-header %}
 
 {% block content %}
-<div class="container">
-  <h3><i class="nav-icon fas fa-store"></i> {{ shop.name }}</h3>
-  <div class="d-inline-flex flex-column">
-      <ul class="list-group list-group-horizontal mt-5 ml-3">
-          <li class="list-group-item">상점 : {{ shop.name }}</li>
-          <li class="list-group-item"> 지역 : {{ shop.area }}</li>
-      </ul>
+<div class="container-fluid mt-5">
+  <h3 class="text-center"><i class="nav-icon fas fa-store"></i> {{ shop.name }}</h3>
+  <div class="border rounded my-5">
+    <h5 class="text-center my-4 font-weight-bold" style="font-size: 1.5rem;"> 
+      <i class="nav-icon fas fa-map-marker-alt"></i> 주소 : {{ shop.address }}
+    </h5>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=125c50379d3e5ced602ff7b485a104f7&libraries=services"></script>
+    <div id="map"
+        style="height:500px;"
+        class="mx-auto mb-5 border border-5">
+    </div>
   </div>
-  <br><br><br>
-  <h5 style= text-align:center> 
-      <i class="nav-icon fas fa-map-marker-alt"></i> <strong>지도 정보 보기 : {{ shop.address }} </strong></h5>
-      <br>
-
-  {% comment %} 여기부터 카카오맵 API {% endcomment %}
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=125c50379d3e5ced602ff7b485a104f7&libraries=services"></script>
-   
-  <div id="map" style="width:800px; height:500px;" class="col-sm-6 mx-auto"></div>
   <script>
     var infowindow = new kakao.maps.InfoWindow({zIndex:1});
     var mapContainer = document.getElementById('map');
@@ -62,6 +57,5 @@
       });
     }
   </script>
-  {% comment %} 여기까지 카카오맵 API {% endcomment %}
 </div>
 {% endblock content %}

@@ -19,5 +19,4 @@ class HomeView(TemplateView):
             'wine_top5': wine_top5,
             'shop_list': shop_list
         }
-        print(shop_list)
         return super().get(request, *args, **kwargs)

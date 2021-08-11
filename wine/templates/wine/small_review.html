@@ -5,5 +5,9 @@
     / {{ review.modify_dt|date:"Y-m-d" }}
   </span>
   <h5>{{ review.title }}</h5>
-  <p>{{ review.content|slice:50 }}</p>
+  <p>
+    {% autoescape off %}
+    {{ review.content|slice:50 }}
+    {% endautoescape %}
+  </p>
 </div>
