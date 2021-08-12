@@ -40,8 +40,10 @@
       {% else %}
         <div class="text-center">작성된 리뷰가 없습니다.</div>
       {% endif %}
+      {% if user.is_active %}
       <a href="{% url 'review:add' %}?wine={{ wine.id }}"
         class="btn btn-outline-dark my-4 float-right">리뷰 작성</a>
+      {% endif %}
   </div>
 </div>
 {% endblock content %}
