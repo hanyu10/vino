@@ -5,5 +5,5 @@ class RoomView(LoginRequiredMixin, TemplateView):
     template_name = 'chat/room.html'
 
     def get_context_data(self, **kwargs):
-        self.extra_context = {'room_name': kwargs['room_name']}
+        self.extra_context = { 'room_name': kwargs['room_name'] }
         return super().get_context_data(**kwargs)

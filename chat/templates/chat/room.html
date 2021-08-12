@@ -9,7 +9,8 @@
     <textarea id="chat-log" cols="100" rows="20" class="p-1 rounded"></textarea><br>
     <div class="d-flex">
         <input id="chat-message-input" type="text" class="flex-grow-1"><br>
-        <input id="chat-message-submit" type="button" value="Send" class="btn btn-outline-dark" style="width: 5rem">
+        <input id="chat-message-submit" type="button" 
+            value="Send" class="btn btn-outline-dark" style="width: 5rem">
     </div>
 
     {{ user.username|json_script:"username"}} 

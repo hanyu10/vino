@@ -18,7 +18,8 @@ def do_request(url):
 
 def append_post(post, json_result):
     # 요일, 일 월 년 시:분:초 +0900 -> 연-월-일 시:분:초
-    pubDate = datetime.datetime.strptime(post['pubDate'], '%a, %d %b %Y %H:%M:%S +0900') \
+    pubDate = datetime.datetime.strptime(post['pubDate'],
+                                    '%a, %d %b %Y %H:%M:%S +0900') \
                 .strftime('%Y-%m-%d %H:%M:%S')
     
     json_result.append({
