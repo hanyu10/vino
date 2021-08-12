@@ -7,10 +7,3 @@ class RoomView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         self.extra_context = {'room_name': kwargs['room_name']}
         return super().get_context_data(**kwargs)
-
-# from django.shortcuts import render
-
-# def room(request, room_name):
-#     return render(request, 'chat/room.html', {
-#         'room_name': room_name
-#     })
