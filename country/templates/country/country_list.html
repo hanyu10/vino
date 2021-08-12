@@ -54,8 +54,8 @@
                   {% include 'common/wine_type_tag.html' %}
                 </h5>
               </dt>
-              <dd class="mt-3">- 국가/생산 지역 : {{ wine.area.area }} > {{wine.region}}</dd>
-              <dd>- 주요 품종 : {{wine.kind}}</dd>
+              <dd class="mt-3">- 국가/생산 지역 : {{ wine.area.area }} > {{ wine.region }}</dd>
+              <dd>- 주요 품종 : {{ wine.kind }}</dd>
             </dl>
             <p>{{wine.explain}}</p>
             <a href="{% url 'wine:detail' wine.id %}"

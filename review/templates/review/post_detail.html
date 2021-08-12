@@ -17,7 +17,7 @@
             <a href="{% url 'wine:detail' post.wine.id %}"
                 class="text-success">{{ post.wine.name }}</a>
             <span class="float-right">
-                <a href="{% url 'review:index'%}?owner={{ post.owner.id }}">{{ post.owner }}</a>
+                <a href="{% url 'review:index' %}?owner={{ post.owner.id }}">{{ post.owner }}</a>
                 / {{ post.modify_dt|date:"Y-m-d" }}
             </span>
         </div>
@@ -33,13 +33,13 @@
     <div class="my-3 text-right">
         <a href="{% url 'review:update' post.id %}" class="btn btn-primary">
             <i class="far fa-edit"></i> 수정</a>
-        <a href="javascript:deletePost('{% url 'review:delete' post.id %}')" class="btn btn-danger"><i
-                class="fas fa-trash"></i> 삭제</a>
+        <a href="javascript:deletePost('{% url 'review:delete' post.id %}')" class="btn btn-danger">
+            <i class="fas fa-trash"></i> 삭제</a>
     </div>
     {% endif %}
 </div>
 
-{% endblock %}
+{% endblock content-wrapper %}
 
 {% block script %}
 <script>
