@@ -2,53 +2,99 @@
   page_obj, query를 입력으로 받는다.
   query가 존재하면 이전 / 다음 버튼에 쿼리를 추가한다.
 {% endcomment %}
-<ul class="pagination justify-content-center my-4">
-    <!-- 이전 페이지 -->
-    {% if page_obj.has_previous %}
+<ul class="pagination justify-content-center my-4 overflow-auto">
+  <!-- 처음, -5, 이전 페이지 -->
+  {% if page_obj.has_previous %}
     <li class="page-item">
-        {% if query %}
-            <a class="page-link" href="?page={{ page_obj.previous_page_number }}&{{ query }}">이전</a>
-        {% else %}
-            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">이전</a>
-        {% endif %}
+      {% if query %}
+        <a class="page-link" href="?page=1&{{ query }}"><i class="fas fa-fast-backward"></i></a>
+      {% else %}
+        <a class="page-link" href="?page=1"><i class="fas fa-fast-backward"></i></a>
+      {% endif %}
     </li>
-    {% else %}
+  {% else %}
     <li class="page-item disabled">
-        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+      <a class="page-link" tabindex="-1" aria-disabled="true" href="#"><i class="fas fa-fast-backward"></i></a>
     </li>
-    {% endif %}
-    <!-- 페이지 리스트 -->
-    {% for page_number in page_obj.paginator.page_range %}
-        {% if page_number == page_obj.number %}
+  {% endif %}
+  {% if page_obj.number|add:-5 >= 1 %}
+    <li class="page-item">
+      {% if query %}
+        <a class="page-link" href="?page={{ page_obj.number|add:-5 }}&{{ query }}"><i class="fas fa-angle-double-left"></i></a>
+      {% else %}
+        <a class="page-link" href="?page={{ page_obj.number|add:-5 }}"><i class="fas fa-angle-double-left"></i></a>
+      {% endif %}
+    </li>
+  {% endif %}
+  {% if page_obj.has_previous %}
+    <li class="page-item">
+      {% if query %}
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}&{{ query }}"><i class="fas fa-angle-left"></i></a>
+      {% else %}
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-angle-left"></i></a>
+      {% endif %}
+    </li>
+  {% else %}
+    <li class="page-item disabled">
+      <a class="page-link" tabindex="-1" aria-disabled="true" href="#"><i class="fas fa-angle-left"></i></a>
+    </li>
+  {% endif %}
+  <!-- 페이지 리스트 -->
+  {% for page_number in page_obj.paginator.page_range %}
+    {% if page_number >= page_obj.number|add:-4 and page_number <= page_obj.number|add:4 %}
+      {% if page_number == page_obj.number %}
         <li class="page-item active" aria-current="page">
-            {% if query %}
-                <a class="page-link" href="?page={{ page_number }}&{{ query }}">{{ page_number }}</a>
-            {% else %}
-                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-            {% endif %}
+          {% if query %}
+            <a class="page-link" href="?page={{ page_number }}&{{ query }}">{{ page_number }}</a>
+          {% else %}
+            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+          {% endif %}
         </li>
         {% else %}
         <li class="page-item">
-            {% if query %}
-                <a class="page-link" href="?page={{ page_number }}&{{ query }}">{{ page_number }}</a>
-            {% else %}
-                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-            {% endif %}
+          {% if query %}
+            <a class="page-link" href="?page={{ page_number }}&{{ query }}">{{ page_number }}</a>
+          {% else %}
+            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+          {% endif %}
         </li>
-        {% endif %}
-    {% endfor %}
-    <!-- 다음 페이지 -->
-    {% if page_obj.has_next %}
-    <li class="page-item">
-        {% if query %}
-            <a class="page-link" href="?page={{ page_obj.next_page_number }}&{{ query }}">다음</a>
-        {% else %}
-            <a class="page-link" href="?page={{ page_obj.next_page_number }}">다음</a>
-        {% endif %}
-    </li>
-    {% else %}
-    <li class="page-item disabled">
-        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
-    </li>
+      {% endif %}
     {% endif %}
+  {% endfor %}
+  <!-- 다음 페이지 -->
+  {% if page_obj.has_next %}
+    <li class="page-item">
+      {% if query %}
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}&{{ query }}"><i class="fas fa-angle-right"></i></a>
+      {% else %}
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}"><i class="fas fa-angle-right"></i></a>
+      {% endif %}
+    </li>
+  {% else %}
+    <li class="page-item disabled">
+      <a class="page-link" tabindex="-1" aria-disabled="true" href="#"><i class="fas fa-angle-right"></i></a>
+    </li>
+  {% endif %}
+  {% if page_obj.number|add:5 <= page_obj.paginator.num_pages %}
+    <li class="page-item">
+      {% if query %}
+        <a class="page-link" href="?page={{ page_obj.number|add:+5 }}&{{ query }}"><i class="fas fa-angle-double-right"></i></a>
+      {% else %}
+        <a class="page-link" href="?page={{ page_obj.number|add:+5 }}"><i class="fas fa-angle-double-right"></i></a>
+      {% endif %}
+    </li>
+  {% endif %}
+  {% if page_obj.has_next %}
+    <li class="page-item">
+      {% if query %}
+        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}&{{ query }}"><i class="fas fa-fast-forward"></i></a>
+      {% else %}
+        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}"><i class="fas fa-fast-forward"></i></a>
+      {% endif %}
+    </li>
+  {% else %}
+    <li class="page-item disabled">
+      <a class="page-link" tabindex="-1" aria-disabled="true" href="#"><i class="fas fa-fast-forward"></i></a>
+    </li>
+  {% endif %}
 </ul>
