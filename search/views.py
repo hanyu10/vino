@@ -45,6 +45,8 @@ class SearchView(FormView):
             wine_query.append(f'sour={sour}')
         if wine_query:
             wine_query = '&'.join(wine_query)
+        else:
+            wine_query = None
 
         self.extra_context = {
             'wine_list': wine_list,
