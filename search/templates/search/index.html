@@ -47,6 +47,10 @@
             </div>
         {% endfor %}
     </div>
+    {% else %}
+    <div class="mt-5">
+        <h2 class="row justify-content-center bg-dark text-light rounded p-3 mt-5">검색 결과가 없습니다.</h2>
+    </div>
     {% endif %}
 
     {% comment %} 페이지네이션 {% endcomment %}
