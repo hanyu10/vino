@@ -13,7 +13,6 @@ class HomeView(TemplateView):
                         .annotate(Avg('post__rating')) \
                         .order_by('-post__rating__avg')[:5]
         shop_list = Shop.objects.all()[:5]
-        print(wine_top5)
         self.extra_context = {
             'wine_top5': wine_top5,
             'shop_list': shop_list
