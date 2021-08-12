@@ -19,7 +19,11 @@
 
 {% block content-wrapper %}
 <div class="row text-light" id="login_form">
-  <form action="." method="post" class="form col-sm-6 col-lg-5 col-xl-4 mx-auto mt-5">
+  {% comment %}
+    action 속성을 주면 쿼리 전달이 안된다.
+    action 속성이 없으면 쿼리를 포함한 현재 URL이 그대로 전달된다.
+  {% endcomment %}
+  <form method="post" class="form col-sm-6 col-lg-5 col-xl-4 mx-auto mt-5">
     {% csrf_token %}
     {% bootstrap_form form %}
       <button type="submit" class="btn btn-primary">
